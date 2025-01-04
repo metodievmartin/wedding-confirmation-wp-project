@@ -1,0 +1,47 @@
+.page-section {
+  padding-top: rfs-value(50px);
+  padding-bottom: rfs-value(50px);
+  margin-top: rfs-value(50px);
+  margin-bottom: rfs-value(50px);
+}
+
+.split-section {
+  max-width: rfs-value(660px);
+  width: 100%;
+  padding: rfs-value(40px);
+}
+
+.date-summary-day {
+  display: block;
+  font-size: 2.02rem;
+  font-weight: 700;
+  line-height: 1;
+
+  &.smaller {
+    font-size: 1.5rem;
+  }
+}
+
+.date-summary-month {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  line-height: 1;
+
+  &.smaller {
+    font-size: 1rem;
+  }
+}
+
+/* Autofill background fix for Bootstrap */
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  background-color: $body-bg !important; /* Desired background */
+  transition: background-color 5000s ease-in-out 0s; /* Prevent flashing */
+}
+
+input:-internal-autofill-selected {
+  background-color: $body-bg !important; /* Fix for Firefox */
+}

@@ -1,0 +1,50 @@
+.btn.btn-primary {
+  border: 0;
+}
+
+.btn {
+  font-weight: 600;
+  transition: .5s;
+}
+
+.btn-square {
+  width: 32px;
+  height: 32px;
+}
+
+.btn-sm-square {
+  width: 38px;
+  height: 38px;
+}
+
+.btn-md-square {
+  width: 44px;
+  height: 44px;
+}
+
+.btn-lg-square {
+  width: 56px;
+  height: 56px;
+}
+
+.btn-square,
+.btn-sm-square,
+.btn-md-square,
+.btn-lg-square {
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: normal;
+}
+
+.btn-outline-body {
+  color: var(--primary);
+  border-color: #777777;
+}
+
+.btn-outline-body:hover {
+  color: #FFFFFF;
+  background: var(--primary);
+  border-color: var(--primary);
+}

@@ -1,0 +1,28 @@
+// ============================================================================
+// Global settings, variables, and overrides
+// ============================================================================
+
+@import 'settings';
+
+// ============================================================================
+// Bootstrap Setup
+// ============================================================================
+
+@import 'bootstrap/scss/bootstrap';
+
+// ============================================================================
+// Project Custom Styles
+// ============================================================================
+
+@import 'base/typography';
+@import 'base/globals';
+
+@import 'components/header';
+@import 'components/footer';
+@import 'components/buttons';
+@import 'components/page-banner';
+@import 'components/hero-banner';
+
+@import 'pages/contacts';
+@import 'pages/homepage';
+

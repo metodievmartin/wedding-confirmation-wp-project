@@ -1,0 +1,13 @@
+.hero-banner {
+  background-color: #f1f1f1;
+  margin-bottom: rfs-value(150px);
+
+  .title-container {
+    padding-top: rfs-value(100px);
+    padding-bottom: rfs-value(100px);
+  }
+
+  .image-container img {
+    margin-bottom: rfs-value(-180px);
+  }
+}

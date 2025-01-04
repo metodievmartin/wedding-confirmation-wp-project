@@ -1,0 +1,26 @@
+.skewed-title {
+  position: relative;
+  font-size: 1rem;
+  width: fit-content;
+  margin: 0 auto;
+  padding: 15px;
+}
+
+.skewed-title::before,
+.skewed-title::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  background: $primary;
+}
+
+.skewed-title::before {
+  top: 0;
+  right: -10px;
+}
+
+.skewed-title::after {
+  bottom: 0;
+  left: -10px;
+}
