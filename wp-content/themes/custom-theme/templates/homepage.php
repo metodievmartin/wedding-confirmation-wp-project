@@ -11,6 +11,7 @@
 
 	<?php get_template_part( 'template-parts/homepage/wedding-info' ); ?>
 
+	<?php get_template_part( 'template-parts/homepage/countdown-area' ); ?>
 
 </main>
 

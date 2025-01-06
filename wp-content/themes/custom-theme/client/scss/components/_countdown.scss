@@ -1,0 +1,37 @@
+.count-down-area {
+  position: relative;
+  top: -73px
+}
+
+.count-down-area .count-down-wrapper {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center
+}
+
+.count-down-area .count-down-wrapper .single-counter {
+  padding: 44px 10px 44px 9px;
+  margin-bottom: 30px
+}
+
+.count-down-area .count-down-wrapper .single-counter span {
+  color: #fff;
+  font-size: 36px;
+  line-height: 1;
+  margin-bottom: 12px;
+  display: block;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-family: 'Barlow', sans-serif
+}
+
+.count-down-area .count-down-wrapper .single-counter p {
+  font-size: 18px;
+  color: #fff;
+  line-height: 1;
+  margin: 0;
+  padding: 0;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-family: 'Barlow', sans-serif
+}
