@@ -111,3 +111,7 @@ function get_theme_asset_url( $path ) {
 
 	return get_template_directory_uri() . '/assets/' . $path;
 }
+
+function get_asset_image_url( $image_name ) {
+	return get_theme_asset_url( 'img/' . $image_name );
+}
