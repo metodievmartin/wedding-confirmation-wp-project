@@ -13,6 +13,8 @@
 
 	<?php get_template_part( 'template-parts/homepage/countdown-area' ); ?>
 
+	<?php get_template_part( 'template-parts/homepage/contact-form' ); ?>
+
 </main>
 
 <?php get_footer(); ?>
