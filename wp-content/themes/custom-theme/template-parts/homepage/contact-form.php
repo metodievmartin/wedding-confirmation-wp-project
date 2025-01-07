@@ -1,9 +1,9 @@
-<section class="contact-form">
+<section class="contact-form page-section">
     <div class="container-xxl">
         <div class="row justify-content-center">
-            <div class="col-xl-6 col-lg-6">
-                <div class="form-wrapper">
-                    <form id="contact-form" action="#" method="POST">
+            <div class="padding-container col-xl-6 col-lg-6">
+                <div class="form-wrapper contact-form-container">
+                    <form id="contact-form" class="needs-validation" novalidate>
                         <!-- Section Title -->
                         <div class="row">
                             <div class="col-lg-12">
@@ -15,36 +15,71 @@
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
-                                <div class="form-box mb-3">
-                                    <input type="text" class="form-control" name="name" placeholder="Name">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" id="sender_name" name="sender_name"
+                                           placeholder="<?php esc_attr_e( 'Your Name', 'wedding_confirmation' ); ?>"
+                                           required>
+                                    <label for="sender_name">
+                                        *<?php esc_html_e( 'Your Name', 'wedding_confirmation' ); ?>
+                                    </label>
+                                    <div class="invalid-feedback">
+										<?php esc_html_e( 'Name is a required field', 'wedding_confirmation' ); ?>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-lg-12">
-                                <div class="form-box subject-icon mb-3">
-                                    <input type="email" class="form-control" name="subject" placeholder="Email">
+                                <div class="form-floating mb-3">
+                                    <input type="email" class="form-control" id="sender_email" name="sender_email"
+                                           placeholder="<?php esc_attr_e( 'Your Email', 'wedding_confirmation' ); ?>"
+                                           required>
+                                    <label for="sender_email">
+                                        *<?php esc_html_e( 'Your Email', 'wedding_confirmation' ); ?>
+                                    </label>
+                                    <div class="invalid-feedback">
+										<?php esc_html_e( 'This field should be a valid email', 'wedding_confirmation' ); ?>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-lg-12 mb-3">
-                                <div class="select-itms">
-                                    <select class="form-select nice-select" name="select" id="select2">
-                                        <option value="">1 Guest</option>
-                                        <option value="">2 Guests</option>
-                                        <option value="">3 Guests</option>
-                                        <option value="">4 Guests</option>
-                                    </select>
-                                </div>
+                                <select class="form-select nice-select form-select-lg mb-3"
+                                        aria-label="Large select example">
+                                    <option selected value="1">1 Guest</option>
+                                    <option value="2">2 Guests</option>
+                                    <option value="3">3 Guests</option>
+                                    <option value="4">4 Guests</option>
+                                </select>
                             </div>
                             <div class="col-lg-12">
-                                <div class="form-box message-icon mb-3">
-                                    <textarea name="message" id="message" class="form-control"
-                                              placeholder="Your Message"></textarea>
+                                <div class="form-floating form-box message-icon mb-3">
+                                        <textarea class="form-control"
+                                                  id="additional_info" name="additional_info"
+                                                  placeholder="<?php esc_attr_e( 'Add additional info here', 'wedding_confirmation' ); ?>"
+                                                  style="height: 100px"
+                                        ></textarea>
+                                    <label for="additional_info">
+										<?php esc_html_e( 'Message', 'wedding_confirmation' ); ?>
+                                    </label>
+                                    <div class="invalid-feedback">
+										<?php esc_html_e( 'Message is a required field', 'wedding_confirmation' ); ?>
+                                    </div>
                                 </div>
-                                <div class="submit-info">
-                                    <button class="btn btn-primary" type="submit">Confirm now</button>
+                                <div class="submit-info text-center">
+                                    <button class="btn btn-primary btn-lg" type="submit">Confirm now</button>
                                 </div>
                             </div>
                         </div>
                     </form>
+
+                    <div class="form-submission-alert alert d-none alert-dismissible my-4" role="alert">
+                        <div class="alert-message type-success">
+							<?php esc_html_e( 'Your message has been sent successfully!', 'wedding_confirmation' ); ?>
+                        </div>
+                        <div class="alert-message type-error">
+							<?php esc_html_e( 'Sorry, there has been an error. Try again later.', 'wedding_confirmation' ); ?>
+                        </div>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+
                     <!-- Shape Inner Flower -->
                     <div class="shape-inner-flower">
                         <img src="<?php echo get_asset_image_url( 'gallery/shape2.png' ) ?>" class="shpe2" alt="">
