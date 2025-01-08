@@ -37,10 +37,14 @@ class Wedding_Confirmation_Custom_Functionality {
 		// Register activation hook.
 		register_activation_hook( __FILE__, array( $this, 'wccf_plugin_activated' ) );
 
-		// Include utility functions.
+		// Include main utility functions
+		// It's important to come BEFORE anything else
 		include_once WCCF_DIR_PATH . 'includes/wccf-utility-functions.php';
 
-		// Include classes.
+		// Include helpers
+		wccf_include( 'includes/recaptcha/helper-functions.php' );
+
+		// Include classes
 		wccf_include( 'includes/contact-form/class-contact-form-main.php' );
 
 		$this->contact_form_main = Contact_Form_Main::init();
