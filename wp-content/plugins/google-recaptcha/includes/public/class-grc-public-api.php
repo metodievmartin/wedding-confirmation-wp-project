@@ -68,6 +68,10 @@ class GRC_Public_API {
 		$secret_key     = $this->get_secret_key();
 		$required_score = $this->get_required_score();
 
+		if ( empty( $token ) ) {
+			return false;
+		}
+
 		$response = wp_remote_post( 'https://www.google.com/recaptcha/api/siteverify', array(
 			'body' => array(
 				'secret'   => $secret_key,
