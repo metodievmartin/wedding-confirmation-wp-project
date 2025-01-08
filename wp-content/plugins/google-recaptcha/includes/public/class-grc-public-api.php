@@ -62,9 +62,9 @@ class GRC_Public_API {
 	}
 
 	/**
-	 * Verify the reCAPTCHA response
+	 * Validate the reCAPTCHA response
 	 */
-	public function verify_recaptcha( $token ) {
+	public function validate_recaptcha( $token ) {
 		$secret_key     = $this->get_secret_key();
 		$required_score = $this->get_required_score();
 
