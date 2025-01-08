@@ -25,6 +25,23 @@ class WP_Recaptcha_V3_Handler {
 		add_action( 'admin_menu', [ $this, 'add_admin_menu' ] );
 		add_action( 'admin_init', [ $this, 'register_settings' ] );
 		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_recaptcha_script' ] );
+		add_action( 'wp_footer', [ $this, 'inject_recaptcha_options' ] );
+	}
+
+	public function is_recaptcha_enabled() {
+		return (bool) get_option( $this->enable_recaptcha_option, 0 );
+	}
+
+	public function get_site_key() {
+		return get_option( $this->site_key_option, '' );
+	}
+
+	public function get_required_score() {
+		return get_option( $this->score_option, 0.5 );
+	}
+
+	private function get_secret_key() {
+		return get_option( $this->secret_key_option, '' );
 	}
 
 	/**
@@ -54,16 +71,28 @@ class WP_Recaptcha_V3_Handler {
 	 * Enqueue the reCAPTCHA v3 script
 	 */
 	public function enqueue_recaptcha_script() {
-		$site_key = get_option( $this->site_key_option );
-		if ( $site_key ) {
+		if ( $this->is_recaptcha_enabled() ) {
 			wp_enqueue_script(
-				'google-recaptcha-v3',
-				'https://www.google.com/recaptcha/api.js?render=' . esc_attr( $site_key ),
+				'google-recaptcha',
+				'https://www.google.com/recaptcha/api.js?render=' . esc_attr( $this->get_site_key() ),
 				[],
 				null,
 				true
 			);
 		}
+	}
+
+	public function inject_recaptcha_options() {
+		$recaptcha_settings = array(
+			'isEnabled' => $this->is_recaptcha_enabled(),
+			'siteKey'   => '',
+		);
+
+		if ( $this->is_recaptcha_enabled() ) {
+			$recaptcha_settings['siteKey'] = $this->get_site_key();
+		}
+
+		echo '<script type="text/javascript">window.recaptchaGlobalOptions = ' . json_encode( $recaptcha_settings ) . ';</script>';
 	}
 
 	/**
@@ -143,35 +172,26 @@ class WP_Recaptcha_V3_Handler {
 	 * Verify the reCAPTCHA response
 	 */
 	public function verify_recaptcha( $token ) {
-		$secret_key = get_option( $this->secret_key_option );
+		$secret_key     = $this->get_secret_key();
+		$required_score = $this->get_required_score();
 
-		$response = wp_remote_post( 'https://www.google.com/recaptcha/api/siteverify', [
-			'body' => [
+		$response = wp_remote_post( 'https://www.google.com/recaptcha/api/siteverify', array(
+			'body' => array(
 				'secret'   => $secret_key,
 				'response' => $token,
-			],
-		] );
+			),
+		) );
 
-		$response_body = wp_remote_retrieve_body( $response );
+		$response_body      = wp_remote_retrieve_body( $response );
+		$recaptcha_response = json_decode( $response_body, true );
 
-		return json_decode( $response_body, true );
-	}
+		error_log( $recaptcha_response );
 
-	/**
-	 * Handle form submission
-	 */
-	public function handle_form_submission() {
-		if ( $_SERVER['REQUEST_METHOD'] === 'POST' && isset( $_POST['g-recaptcha-response'] ) ) {
-			$recaptcha_response = $this->verify_recaptcha( $_POST['g-recaptcha-response'] );
-			$required_score     = get_option( $this->score_option, 0.5 );
-
-			if ( empty( $recaptcha_response['success'] ) || $recaptcha_response['score'] < $required_score ) {
-				wp_die( 'reCAPTCHA verification failed. Please try again.' );
-			}
-
-			// Continue processing form submission
-			echo 'Form submitted successfully!';
+		if ( empty( $recaptcha_response['success'] ) || $recaptcha_response['score'] < $required_score ) {
+			return false;
 		}
+
+		return true;
 	}
 }
 
