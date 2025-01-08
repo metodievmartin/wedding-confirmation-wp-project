@@ -4,8 +4,10 @@
             <div class="padding-container col-xl-6 col-lg-6">
                 <div class="form-wrapper contact-form-container">
                     <form id="contact-form" class="needs-validation" novalidate>
-                        <input type="hidden" name="recaptcha_action" value="guest_confirmation">
-                        <input type="hidden" name="recaptcha_token" value="">
+						<?php if ( wccf_is_recaptcha_enabled() ): ?>
+                            <input type="hidden" name="recaptcha_action" value="guest_confirmation">
+                            <input type="hidden" name="recaptcha_token" value="">
+						<?php endif; ?>
 
                         <!-- Section Title -->
                         <div class="row">
@@ -66,7 +68,16 @@
 										<?php esc_html_e( 'Message is a required field', 'wedding_confirmation' ); ?>
                                     </div>
                                 </div>
-                                <div class="submit-info text-center">
+
+								<?php if ( wccf_is_recaptcha_enabled() ): ?>
+                                    <div>
+                                        This site is protected by reCAPTCHA and the Google
+                                        <a href="https://policies.google.com/privacy">Privacy Policy</a> and
+                                        <a href="https://policies.google.com/terms">Terms of Service</a> apply.
+                                    </div>
+								<?php endif; ?>
+
+                                <div class="submit-info text-center mt-4">
                                     <button class="btn btn-primary btn-lg" type="submit">Confirm now</button>
                                 </div>
                             </div>
