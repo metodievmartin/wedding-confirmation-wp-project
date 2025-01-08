@@ -86,40 +86,52 @@ class Contact_Form_Rest {
 	}
 
 	function handle_contact_form_submission( $request ) {
-		// Extract parameters
-		$parameters       = $request->get_params();
-		$guest_name       = sanitize_text_field( $parameters['guest_name'] ?? '' );
-		$guest_email      = sanitize_email( $parameters['guest_email'] ?? '' );
-		$additional_info  = sanitize_textarea_field( $parameters['additional_info'] ?? '' );
-		$recaptcha_token  = sanitize_text_field( $parameters['recaptcha_token'] ?? '' );
-		$recaptcha_action = sanitize_text_field( $parameters['recaptcha_action'] ?? '' );
+		$params = $request->get_params();
 
-		// TODO: implement recaptcha
+		// Extract parameters
+		$guest_name       = sanitize_text_field( $params['guest_name'] ?? '' );
+		$guest_email      = sanitize_email( $params['guest_email'] ?? '' );
+		$additional_info  = sanitize_textarea_field( $params['additional_info'] ?? '' );
+		$recaptcha_token  = sanitize_text_field( $params['recaptcha_token'] ?? '' );
+		$recaptcha_action = sanitize_text_field( $params['recaptcha_action'] ?? '' );
+
+		// Run the reCAPTCHA validation if the service is enabled
+		if ( wccf_is_recaptcha_enabled() ) {
+			error_log( 'enabled' );
+
+			if ( empty( $recaptcha_action ) || $recaptcha_action != 'guest_confirmation' || ! wccf_validate_recaptcha( $recaptcha_token ) ) {
+				return rest_ensure_response( new WP_Error(
+					'validation_failed',
+					__( 'Validation failed.', 'wccf-domain' ),
+					array( 'status' => 400 )
+				) );
+			}
+		}
 
 		// Validate required fields
 		if ( empty( $guest_name ) || empty( $guest_email ) || empty( $additional_info ) ) {
 			return rest_ensure_response( new WP_Error(
 				'missing_fields',
-				__( 'Required fields are missing.', 'bcf-domain' ),
-				array( 'status' => 400, 'params' => $parameters )
+				__( 'Required fields are missing.', 'wccf-domain' ),
+				array( 'status' => 400, 'params' => $params )
 			) );
 		}
 
 		if ( ! is_email( $guest_email ) ) {
 			return rest_ensure_response( new WP_Error(
 				'missing_fields',
-				__( 'Please provide a valid email.', 'bcf-domain' ),
+				__( 'Please provide a valid email.', 'wccf-domain' ),
 				array( 'status' => 400 )
 			) );
 		}
 
 		// Validate email format
 		if ( ! is_email( $guest_email ) ) {
-			return new WP_Error(
+			return rest_ensure_response( new WP_Error(
 				'invalid_email',
 				'The provided email address is not valid.',
 				array( 'status' => 400 )
-			);
+			) );
 		}
 		// Format the current date and time based on WP timezone settings
 		$submission_time = current_time( 'd/m/Y H:i' ); // Example: 23/10/2024 15:44
@@ -149,17 +161,15 @@ class Contact_Form_Rest {
 //		if ( is_wp_error( $post_id ) ) {
 //			return rest_ensure_response( new WP_Error(
 //				'submission_failed',
-//				__( 'Form submission failed.', 'bcf-domain' ),
+//				__( 'Form submission failed.', 'wccf-domain' ),
 //				array( 'status' => 500 )
 //			) );
 //		}
 
-		// TODO: implement send mail functionality
-
 		// Successful Response
 		return rest_ensure_response( array(
 			'success' => true,
-			'message' => __( 'Form submitted successfully.', 'bcf-domain' ),
+			'message' => __( 'Form submitted successfully.', 'wccf-domain' ),
 		) );
 	}
 
