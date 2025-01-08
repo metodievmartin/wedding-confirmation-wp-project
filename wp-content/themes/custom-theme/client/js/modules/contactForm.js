@@ -1,15 +1,24 @@
 import $ from 'jquery';
+import { getRecaptchaOptions } from '../utils/recaptchaUtils';
 
 export function init(contactFormSelector = '#contact-form') {
+  const recaptchaOptions = getRecaptchaOptions();
+  let $contactForm;
+  let $formContainer;
+  let $submissionAlert;
+  let $recaptchaAction;
+  let $recaptchaToken;
+  let $submitButton;
+
   $(contactFormSelector).on('submit', async function (e) {
     e.preventDefault();
 
-    // TODO: implement recaptcha
-
-    const $contactForm = $(this);
-    const $formContainer = $contactForm.closest('.contact-form-container');
-    const $submissionAlert = $formContainer.find('.form-submission-alert');
-    const $submitButton = $contactForm.find('#form-submit-button');
+    $contactForm = $(this);
+    $formContainer = $contactForm.closest('.contact-form-container');
+    $submissionAlert = $formContainer.find('.form-submission-alert');
+    $submitButton = $contactForm.find('#form-submit-button');
+    $recaptchaAction = $formContainer.find('input[name="recaptcha_action"]');
+    $recaptchaToken = $formContainer.find('input[name="recaptcha_token"]');
 
     $submissionAlert.addClass('d-none');
     $submissionAlert.removeClass('alert-error alert-success');
@@ -21,11 +30,31 @@ export function init(contactFormSelector = '#contact-form') {
 
     $submitButton.prop('disabled', true);
 
+    if (recaptchaOptions.isEnabled) {
+      grecaptcha.ready(function () {
+        grecaptcha
+          .execute(recaptchaOptions.siteKey, { action: $recaptchaAction.val() })
+          .then(function (token) {
+            $recaptchaToken.val(token);
+            console.log('recaptcha token: ', token);
+            makeRequest();
+          });
+      });
+
+      return;
+    }
+
+    makeRequest();
+  });
+
+  async function makeRequest() {
     // Create form data object
     const formData = {
-      sender_name: $contactForm.find('#sender_name').val().trim(),
-      sender_email: $contactForm.find('#sender_email').val().trim(),
-      additional_info: $contactForm.find('#additional_info').val().trim(),
+      guest_name: $contactForm.find('#guest_name').val()?.trim(),
+      guest_email: $contactForm.find('#guest_email').val()?.trim(),
+      additional_info: $contactForm.find('#additional_info').val()?.trim(),
+      recaptcha_action: $recaptchaAction.val(),
+      recaptcha_token: $recaptchaToken.val(),
     };
 
     try {
@@ -58,5 +87,5 @@ export function init(contactFormSelector = '#contact-form') {
 
     $submissionAlert.removeClass('d-none');
     $submitButton.prop('disabled', false);
-  });
+  }
 }

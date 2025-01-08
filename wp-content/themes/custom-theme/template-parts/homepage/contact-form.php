@@ -4,6 +4,9 @@
             <div class="padding-container col-xl-6 col-lg-6">
                 <div class="form-wrapper contact-form-container">
                     <form id="contact-form" class="needs-validation" novalidate>
+                        <input type="hidden" name="recaptcha_action" value="guest_confirmation">
+                        <input type="hidden" name="recaptcha_token" value="">
+
                         <!-- Section Title -->
                         <div class="row">
                             <div class="col-lg-12">
@@ -16,10 +19,10 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="sender_name" name="sender_name"
+                                    <input type="text" class="form-control" id="guest_name" name="guest_name"
                                            placeholder="<?php esc_attr_e( 'Your Name', 'wedding_confirmation' ); ?>"
                                            required>
-                                    <label for="sender_name">
+                                    <label for="guest_name">
                                         *<?php esc_html_e( 'Your Name', 'wedding_confirmation' ); ?>
                                     </label>
                                     <div class="invalid-feedback">
@@ -29,10 +32,10 @@
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-floating mb-3">
-                                    <input type="email" class="form-control" id="sender_email" name="sender_email"
+                                    <input type="email" class="form-control" id="guest_email" name="guest_email"
                                            placeholder="<?php esc_attr_e( 'Your Email', 'wedding_confirmation' ); ?>"
                                            required>
-                                    <label for="sender_email">
+                                    <label for="guest_email">
                                         *<?php esc_html_e( 'Your Email', 'wedding_confirmation' ); ?>
                                     </label>
                                     <div class="invalid-feedback">
