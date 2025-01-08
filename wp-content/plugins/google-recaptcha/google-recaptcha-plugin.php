@@ -69,8 +69,8 @@ class Google_Recaptcha_Main {
 		grc_include( 'includes/core/class-grc-core.php' );
 		grc_include( 'includes/public/class-grc-public-api.php' );
 
-		$this->grc_core       = GRC_CORE::init();
-		$this->grc_public_api = GRC_PUBLIC_API::init();
+		$this->grc_core       = GRC_Core::init();
+		$this->grc_public_api = GRC_Public_API::init();
 	}
 
 	/**

@@ -5,8 +5,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class GRC_CORE {
-	use GRC_SETTINGS_TRAIT;
+class GRC_Core {
+	use GRC_Settings_Trait;
 
 	private static $instance = null;
 
@@ -15,7 +15,7 @@ class GRC_CORE {
 	/**
 	 * Initialises the functionality and makes sure it's done only once.
 	 *
-	 * @return GRC_CORE
+	 * @return GRC_Core
 	 */
 	public static function init() {
 		if ( null === self::$instance ) {
@@ -28,7 +28,7 @@ class GRC_CORE {
 	/**
 	 * Get the singleton instance of the plugin.
 	 *
-	 * @return GRC_CORE|null
+	 * @return GRC_Core|null
 	 */
 	public static function get_instance() {
 		return self::$instance;

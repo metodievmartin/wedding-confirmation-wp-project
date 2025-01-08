@@ -5,8 +5,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class GRC_PUBLIC_API {
-	use GRC_SETTINGS_TRAIT;
+class GRC_Public_API {
+	use GRC_Settings_Trait;
 
 	private static $instance = null;
 
@@ -15,7 +15,7 @@ class GRC_PUBLIC_API {
 	/**
 	 * Initialises the functionality and makes sure it's done only once.
 	 *
-	 * @return GRC_PUBLIC_API
+	 * @return GRC_Public_API
 	 */
 	public static function init() {
 		if ( null === self::$instance ) {
@@ -28,7 +28,7 @@ class GRC_PUBLIC_API {
 	/**
 	 * Get the singleton instance of the plugin.
 	 *
-	 * @return GRC_PUBLIC_API|null
+	 * @return GRC_Public_API|null
 	 */
 	public static function get_instance() {
 		return self::$instance;

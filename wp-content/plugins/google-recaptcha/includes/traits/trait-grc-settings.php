@@ -1,6 +1,6 @@
 <?php
 
-trait GRC_SETTINGS_TRAIT {
+trait GRC_Settings_Trait {
 	public const PLUGIN_SLUG = 'wp-recaptcha-v3';
 	public const ENABLE_RECAPTCHA_OPTION = 'wp_recaptcha_v3_enabled';
 	public const SITE_KEY_OPTION = 'wp_recaptcha_v3_site_key';
