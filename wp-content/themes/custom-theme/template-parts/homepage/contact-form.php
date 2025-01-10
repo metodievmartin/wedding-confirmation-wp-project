@@ -4,6 +4,7 @@
             <div class="padding-container col-xl-6 col-lg-6">
                 <div class="form-wrapper contact-form-container">
                     <form id="contact-form" class="needs-validation" novalidate>
+
 						<?php if ( wccf_is_recaptcha_enabled() ): ?>
                             <input type="hidden" name="recaptcha_action" value="guest_confirmation">
                             <input type="hidden" name="recaptcha_token" value="">
@@ -21,14 +22,28 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="guest_name" name="guest_name"
-                                           placeholder="<?php esc_attr_e( 'Your Name', 'wedding_confirmation' ); ?>"
+                                    <input type="text" class="form-control" id="guest_first_name"
+                                           name="guest_first_name"
+                                           placeholder="<?php esc_attr_e( 'First Name', 'wedding_confirmation' ); ?>"
                                            required>
-                                    <label for="guest_name">
-                                        *<?php esc_html_e( 'Your Name', 'wedding_confirmation' ); ?>
+                                    <label for="guest_first_name">
+                                        *<?php esc_html_e( 'First Name', 'wedding_confirmation' ); ?>
                                     </label>
                                     <div class="invalid-feedback">
-										<?php esc_html_e( 'Name is a required field', 'wedding_confirmation' ); ?>
+										<?php esc_html_e( 'First name is a required field', 'wedding_confirmation' ); ?>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" id="guest_last_name" name="guest_last_name"
+                                           placeholder="<?php esc_attr_e( 'Last Name', 'wedding_confirmation' ); ?>"
+                                           required>
+                                    <label for="guest_last_name">
+                                        *<?php esc_html_e( 'Last Name', 'wedding_confirmation' ); ?>
+                                    </label>
+                                    <div class="invalid-feedback">
+										<?php esc_html_e( 'Last name is a required field', 'wedding_confirmation' ); ?>
                                     </div>
                                 </div>
                             </div>
@@ -46,7 +61,8 @@
                                 </div>
                             </div>
                             <div class="col-lg-12 mb-3">
-                                <select class="form-select nice-select form-select-lg mb-3"
+                                <select id="num_guests" name="num_guests"
+                                        class="form-select nice-select form-select-lg mb-3"
                                         aria-label="Large select example">
                                     <option selected value="1">1 Guest</option>
                                     <option value="2">2 Guests</option>
@@ -62,11 +78,8 @@
                                                   style="height: 100px"
                                         ></textarea>
                                     <label for="additional_info">
-										<?php esc_html_e( 'Message', 'wedding_confirmation' ); ?>
+										<?php esc_html_e( 'Additional info', 'wedding_confirmation' ); ?>
                                     </label>
-                                    <div class="invalid-feedback">
-										<?php esc_html_e( 'Message is a required field', 'wedding_confirmation' ); ?>
-                                    </div>
                                 </div>
 
 								<?php if ( wccf_is_recaptcha_enabled() ): ?>
