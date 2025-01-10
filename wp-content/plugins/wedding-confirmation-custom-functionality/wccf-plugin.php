@@ -37,6 +37,7 @@ class Wedding_Confirmation_Custom_Functionality {
 
 		// Register activation hook.
 		register_activation_hook( __FILE__, array( $this, 'wccf_plugin_activated' ) );
+		register_deactivation_hook( __FILE__, array( $this, 'wccf_plugin_deactivated' ) );
 
 		// Include main utility functions
 		// It's important to come BEFORE anything else
