@@ -79,4 +79,42 @@ class Contact_Form_DB {
 		dbDelta( $sql ); // Execute the query
 	}
 
+	/**
+	 * @throws Exception
+	 */
+	public function insert_new_confirmation_in_db( $data ) {
+		global $wpdb;
+
+		// Sanitise and validate data
+		$sanitised_data = [
+			'first_name'      => sanitize_text_field( $data['first_name'] ?? '' ),
+			'last_name'       => sanitize_text_field( $data['last_name'] ?? '' ),
+			'email'           => sanitize_email( $data['email'] ?? '' ),
+			'num_guests'      => absint( $data['num_guests'] ?? 1 ),
+			'additional_info' => sanitize_textarea_field( $data['additional_info'] ?? '' ),
+		];
+
+		// Validate required fields
+		if ( empty( $sanitised_data['first_name'] ) || empty( $sanitised_data['last_name'] ) || empty( $sanitised_data['email'] ) ) {
+			throw new Exception( 'Name and email are required.' );
+		}
+
+		// Prepare the SQL query using placeholders
+		$sql = $wpdb->prepare(
+			"INSERT INTO {$this->full_table_name} (first_name, last_name, email, num_guests, additional_info) VALUES (%s, %s, %s, %d, %s)",
+			$sanitised_data['first_name'],
+			$sanitised_data['last_name'],
+			$sanitised_data['email'],
+			$sanitised_data['num_guests'],
+			$sanitised_data['additional_info']
+		);
+
+		$result = $wpdb->query( $sql );
+
+		if ( $wpdb->last_error ) {
+			throw new Exception( 'Database error: ' . $wpdb->last_error );
+		}
+
+		return $wpdb->insert_id; // Return the ID of the inserted row
+	}
 }
