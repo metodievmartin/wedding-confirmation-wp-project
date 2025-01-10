@@ -47,6 +47,7 @@ class Wedding_Confirmation_Custom_Functionality {
 
 		// Include classes
 		wccf_include( 'includes/contact-form/class-contact-form-main.php' );
+		wccf_include( 'includes/public/class-public-api.php' );
 
 		// Initialise each instance
 		$this->instances['contact_form'] = new Contact_Form_Main();
@@ -98,20 +99,23 @@ class Wedding_Confirmation_Custom_Functionality {
 }
 
 /**
- * The main function responsible for initialising and returning the single BrandIt_Custom_Functionality Instance to functions everywhere.
+ * The main function responsible for initialising and returning the single WCCF_Public_API Instance to functions everywhere.
  *
- * @return  Wedding_Confirmation_Custom_Functionality
+ * @return  WCCF_Public_API
  */
-function wccf() {
-	global $wccf;
+function wccf(): WCCF_Public_API {
+	global $wccf, $wccf_api;
 
-	// Instantiate only once.
 	if ( ! isset( $wccf ) ) {
 		$wccf = new Wedding_Confirmation_Custom_Functionality();
 		$wccf->initialise();
 	}
 
-	return $wccf;
+	if ( ! isset( $wccf_api ) ) {
+		$wccf_api = new WCCF_Public_API( $wccf );
+	}
+
+	return $wccf_api;
 }
 
 // Instantiate.
