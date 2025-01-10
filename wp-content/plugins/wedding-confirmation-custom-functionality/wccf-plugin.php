@@ -30,6 +30,7 @@ class Wedding_Confirmation_Custom_Functionality {
 	public function initialise() {
 		// Define constants.
 		$this->define( 'WCCF', true );
+		$this->define( 'WCCF_PLUGIN_FILE', __FILE__ );
 		$this->define( 'WCCF_DIR_PATH', plugin_dir_path( __FILE__ ) );
 		$this->define( 'WCCF_DIR_URL', plugin_dir_url( __FILE__ ) );
 		$this->define( 'WCCF_BASENAME', plugin_basename( __FILE__ ) );

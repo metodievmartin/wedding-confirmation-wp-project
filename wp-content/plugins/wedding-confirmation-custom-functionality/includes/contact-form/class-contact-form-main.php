@@ -10,11 +10,10 @@ class Contact_Form_Main {
 	// Rest
 	const NAMESPACE = 'confirmation/v1';
 
-	private static $instance = null;
+	// Custom DB
+	const DB_TABLE_NAME = 'confirmations';
 
-	private $submission_cpt;
-	private $rest_endpoints;
-	private $submission_admin;
+	private static $instance = null;
 
 	// ========== Static Methods ==========
 
@@ -49,11 +48,12 @@ class Contact_Form_Main {
 	// ========== Init ==========
 
 	private function initialise() {
-		//	Init Custom Post Types
-		wccf_include( 'includes/contact-form/class-contact-form-cpt.php' );
+		//	Init Custom Database
+		wccf_include( 'includes/contact-form/class-contact-form-db.php' );
+		Contact_Form_DB::init( WCCF_PLUGIN_FILE, self::DB_TABLE_NAME );
 
 		//	Init Custom Rest Endpoints
 		wccf_include( 'includes/contact-form/class-contact-form-rest.php' );
-		$rest_endpoints = Contact_Form_Rest::init( self::NAMESPACE, self::SUBMISSION_CPT_SLUG );
+		Contact_Form_Rest::init( self::NAMESPACE, self::SUBMISSION_CPT_SLUG );
 	}
 }
