@@ -2,7 +2,7 @@
 
 /*
  * Plugin Name: Wedding Confirmation Custom Functionality Plugin
- * Description: This plugin adds additional functionality and Custom Post Types like Services, etc.
+ * Description: Provides the all functionality to manage wedding confirmations with a plugin that integrates a custom contact form, REST API endpoints, and database handling for efficient guest response tracking.
  * Version: 1.0
  * Author: Martin Metodiev
  * Author URI: https://github.com/metodievmartin
@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 class Wedding_Confirmation_Custom_Functionality {
-	public $contact_form_main = null;
+	public $instances = array();
 
 	/**
 	 * Main constructor.
@@ -48,13 +48,30 @@ class Wedding_Confirmation_Custom_Functionality {
 		// Include classes
 		wccf_include( 'includes/contact-form/class-contact-form-main.php' );
 
-		$this->contact_form_main = Contact_Form_Main::init();
+		// Initialise each instance
+		$this->instances['contact_form'] = new Contact_Form_Main();
 	}
 
 	/**
-	 * Activation hook.
+	 * Handles the plugin activation process.
+	 *
+	 * This method is triggered when the plugin is activated. It iterates through
+	 * all registered instances stored in `$this->instances` and checks if they
+	 * have an `on_activation_hook` method. If the method exists, it is called,
+	 * allowing individual components to perform their activation-specific logic
+	 * (e.g. setting up database tables, default options, etc.).
+	 *
+	 * Finally, `flush_rewrite_rules()` is called to ensure that WordPress's
+	 * rewrite rules are updated, accounting for any custom post types, taxonomies,
+	 * or routes that may have been registered during activation.
 	 */
 	public function wccf_plugin_activated() {
+		foreach ( $this->instances as $instance ) {
+			if ( method_exists( $instance, 'on_activation_hook' ) ) {
+				$instance->on_activation_hook();
+			}
+		}
+
 		flush_rewrite_rules();
 	}
 

@@ -14,50 +14,21 @@ class Contact_Form_Rest {
 	// ========== Properties ==========
 
 	private $namespace;
-	private $form_submission_slug;
-
-	// ========== Static Properties ==========
-
-	private static $instance = null;
-
-	// ========== Static Methods ==========
-
-	/**
-	 * Initialises the functionality and makes sure it's done only once.
-	 *
-	 * @return Contact_Form_Rest
-	 */
-	public static function init( $namespace, $form_submission_slug ) {
-		if ( null === self::$instance ) {
-			self::$instance = new self( $namespace, $form_submission_slug );
-		}
-
-		return self::$instance;
-	}
-
-	/**
-	 * Get the singleton instance of the plugin.
-	 *
-	 * @return Contact_Form_Rest|null
-	 */
-	public static function get_instance() {
-		return self::$instance;
-	}
+	private $service;
 
 	// ========== Constructor ==========
 
-	private function __construct( $namespace, $form_submission_slug ) {
-		$this->namespace            = $namespace;
-		$this->form_submission_slug = $form_submission_slug;
+	public function __construct( $namespace, Contact_Form_Service $service ) {
+		$this->namespace = $namespace;
+		$this->service   = $service;
 
 		// Init functionality
-		$this->initialise();
+		$this->_initialise();
 	}
 
 	// ========== Init ==========
 
-	private function initialise() {
-		error_log( 'Initialising REST API endpoint' );
+	private function _initialise() {
 		add_action( 'rest_api_init', array( $this, 'register_contact_form_rest_route' ) );
 	}
 
@@ -89,16 +60,16 @@ class Contact_Form_Rest {
 		$params = $request->get_params();
 
 		// Extract parameters
-		$guest_name       = sanitize_text_field( $params['guest_name'] ?? '' );
+		$guest_first_name = sanitize_text_field( $params['guest_first_name'] ?? '' );
+		$guest_last_name  = sanitize_text_field( $params['guest_last_name'] ?? '' );
 		$guest_email      = sanitize_email( $params['guest_email'] ?? '' );
+		$num_guests       = absint( $params['num_guests'] ?? 1 );
 		$additional_info  = sanitize_textarea_field( $params['additional_info'] ?? '' );
 		$recaptcha_token  = sanitize_text_field( $params['recaptcha_token'] ?? '' );
 		$recaptcha_action = sanitize_text_field( $params['recaptcha_action'] ?? '' );
 
 		// Run the reCAPTCHA validation if the service is enabled
 		if ( wccf_is_recaptcha_enabled() ) {
-			error_log( 'enabled' );
-
 			if ( empty( $recaptcha_action ) || $recaptcha_action != 'guest_confirmation' || ! wccf_validate_recaptcha( $recaptcha_token ) ) {
 				return rest_ensure_response( new WP_Error(
 					'validation_failed',
@@ -109,19 +80,11 @@ class Contact_Form_Rest {
 		}
 
 		// Validate required fields
-		if ( empty( $guest_name ) || empty( $guest_email ) || empty( $additional_info ) ) {
+		if ( empty( $guest_first_name ) || empty( $guest_last_name ) || empty( $guest_email ) ) {
 			return rest_ensure_response( new WP_Error(
 				'missing_fields',
 				__( 'Required fields are missing.', 'wccf-domain' ),
 				array( 'status' => 400, 'params' => $params )
-			) );
-		}
-
-		if ( ! is_email( $guest_email ) ) {
-			return rest_ensure_response( new WP_Error(
-				'missing_fields',
-				__( 'Please provide a valid email.', 'wccf-domain' ),
-				array( 'status' => 400 )
 			) );
 		}
 
@@ -133,38 +96,25 @@ class Contact_Form_Rest {
 				array( 'status' => 400 )
 			) );
 		}
-		// Format the current date and time based on WP timezone settings
-		$submission_time = current_time( 'd/m/Y H:i' ); // Example: 23/10/2024 15:44
 
-		// Format the post content
-		$formatted_message = "\nName: $guest_name";
-		$formatted_message .= "\nEmail: $guest_email";
-		$formatted_message .= "\nAdditional Info:\n$additional_info";
-		$formatted_message .= "\nTime: $submission_time";
-		$formatted_message .= "\nAction: $recaptcha_action";
-		$formatted_message .= "\nToken: $recaptcha_token";
+		$confirmation_details = array(
+			'first_name'      => $guest_first_name,
+			'last_name'       => $guest_last_name,
+			'email'           => $guest_email,
+			'additional_info' => $additional_info,
+			'num_guests'      => $num_guests,
+		);
 
-		error_log( $formatted_message );
+		try {
+			$this->service->save_confirmation_in_db( $confirmation_details );
+		} catch ( Exception $e ) {
+			return rest_ensure_response( new WP_Error(
+				'internal_error',
+				'Something went wrong.',
+				array( 'status' => 500 )
+			) );
+		}
 
-		// TODO: should form-submission objects be in a custom DB table instead of Custom Post Type and wp_posts?
-		// Create a new form submission post
-//		$post_id = wp_insert_post( array(
-//			'post_type'    => $this->form_submission_slug,
-//			'post_title'   => $guest_email,  // Use the email as the post title
-//			'post_content' => $formatted_message,
-//			'post_status'  => 'publish',
-//			'meta_input'   => array(
-//				'submitted_email' => $guest_email,
-//			),
-//		) );
-//
-//		if ( is_wp_error( $post_id ) ) {
-//			return rest_ensure_response( new WP_Error(
-//				'submission_failed',
-//				__( 'Form submission failed.', 'wccf-domain' ),
-//				array( 'status' => 500 )
-//			) );
-//		}
 
 		// Successful Response
 		return rest_ensure_response( array(

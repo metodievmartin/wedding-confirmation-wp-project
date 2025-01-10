@@ -4,56 +4,41 @@ class Contact_Form_Main {
 
 	// ========== Constants ==========
 
-	// Custom Post Type
-	const SUBMISSION_CPT_SLUG = 'form-submission';
-
 	// Rest
 	const NAMESPACE = 'confirmation/v1';
 
 	// Custom DB
 	const DB_TABLE_NAME = 'confirmations';
 
-	private static $instance = null;
+	// ========== Properties ==========
 
-	// ========== Static Methods ==========
-
-	/**
-	 * Initialises the functionality and makes sure it's done only once.
-	 *
-	 * @return Contact_Form_Main
-	 */
-	public static function init() {
-		if ( null === self::$instance ) {
-			self::$instance = new self();
-		}
-
-		return self::$instance;
-	}
-
-	/**
-	 * Get the singleton instance of the plugin.
-	 *
-	 * @return Contact_Form_Main|null
-	 */
-	public static function get_instance() {
-		return self::$instance;
-	}
+	private $custom_db;
+	private $rest_api;
+	public $service;
 
 	// ========== Constructor ==========
 
-	private function __construct() {
-		$this->initialise();
+	public function __construct() {
+		$this->_initialise();
 	}
 
 	// ========== Init ==========
 
-	private function initialise() {
-		//	Init Custom Database
+	private function _initialise() {
+		// Init Custom Database
 		wccf_include( 'includes/contact-form/class-contact-form-db.php' );
-		Contact_Form_DB::init( WCCF_PLUGIN_FILE, self::DB_TABLE_NAME );
+		$this->custom_db = new Contact_Form_DB( self::DB_TABLE_NAME );
 
-		//	Init Custom Rest Endpoints
+		// Init Service layer
+		wccf_include( 'includes/contact-form/class-contact-form-service.php' );
+		$this->service = new Contact_Form_Service( $this->custom_db );
+
+		// Init Custom Rest Endpoints
 		wccf_include( 'includes/contact-form/class-contact-form-rest.php' );
-		Contact_Form_Rest::init( self::NAMESPACE, self::SUBMISSION_CPT_SLUG );
+		$this->rest_api = new Contact_Form_Rest( self::NAMESPACE, $this->service );
+	}
+
+	public function on_activation_hook() {
+		$this->custom_db->on_activation_hook();
 	}
 }
