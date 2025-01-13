@@ -18,7 +18,7 @@ class Contact_Form_Rest {
 
 	// ========== Constructor ==========
 
-	public function __construct( $namespace, Contact_Form_Service $service ) {
+	public function __construct( $namespace, $service ) {
 		$this->namespace = $namespace;
 		$this->service   = $service;
 

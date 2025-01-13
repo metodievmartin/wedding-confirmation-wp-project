@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class Contact_Form_DB {
+class Confirmations_Custom_DB {
 
 	private $charset;
 	private $full_table_name;

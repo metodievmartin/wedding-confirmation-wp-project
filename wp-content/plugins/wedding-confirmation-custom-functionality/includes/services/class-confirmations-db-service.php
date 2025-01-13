@@ -1,9 +1,9 @@
 <?php
 
-class Contact_Form_Service {
+class Confirmations_DB_Service {
 	private $db;
 
-	public function __construct( Contact_Form_DB $db ) {
+	public function __construct( Confirmations_Custom_DB $db ) {
 		$this->db = $db;
 	}
 
