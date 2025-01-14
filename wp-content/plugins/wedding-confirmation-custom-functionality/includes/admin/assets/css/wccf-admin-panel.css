@@ -1,0 +1,106 @@
+.search-and-filter-container {
+    display: flex;
+}
+
+.confirmations-search-form .search-input {
+    width: 250px;
+    border-radius: 3px 0 0 3px !important;
+    border-right: none !important;
+    margin-right: -1px;
+}
+
+.confirmations-search-form .submit-button {
+    border-radius: 0 3px 3px 0 !important;
+}
+
+/* General container styling */
+.tablenav {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px 0;
+}
+
+.tablenav-pages {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Pagination links */
+.tablenav-pages .page-numbers {
+    display: inline-block;
+    padding: 5px 10px;
+    font-size: 14px;
+    text-decoration: none;
+    color: #2271b1;
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+/* Current page */
+.tablenav-pages .page-numbers.current {
+    font-weight: bold;
+    color: #fff;
+    background-color: #2271b1;
+    border-color: #2271b1;
+}
+
+/* Hover and focus states */
+.tablenav-pages .page-numbers:not(.current):hover,
+.tablenav-pages .page-numbers:not(.current):focus {
+    color: #0056b3;
+    background-color: #e9ecef;
+    border-color: #ced4da;
+    text-decoration: none;
+}
+
+/* General styling for the form */
+.reset-filters-form {
+    margin: 0 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Reset button styling */
+.reset-filters-form .button {
+    padding: 6px 12px;
+    background-color: #007bff;
+    border: 1px solid #007bff;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.reset-filters-form .button:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+/* Badge container */
+.reset-filters-form span {
+    display: flex;
+    gap: 5px;
+}
+
+/* Badge styling */
+.badge {
+    display: inline-block;
+    padding: 4px 8px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #6c757d;
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    white-space: nowrap;
+}
+
+.badge.text-bg-secondary {
+    color: #fff;
+    background-color: #6c757d;
+}

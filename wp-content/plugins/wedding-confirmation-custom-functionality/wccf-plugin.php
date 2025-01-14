@@ -17,8 +17,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class Wedding_Confirmation_Custom_Functionality {
 	public $instances = array();
+	public $services = array();
 	public $custom_DBs;
-	public $services;
 
 	/**
 	 * Main constructor.
@@ -43,7 +43,7 @@ class Wedding_Confirmation_Custom_Functionality {
 
 		// Include main utility functions
 		// It's important to come BEFORE anything else
-		include_once WCCF_DIR_PATH . 'includes/wccf-utility-functions.php';
+		require_once WCCF_DIR_PATH . 'includes/wccf-utility-functions.php';
 
 		// Include helpers
 		wccf_include( 'includes/recaptcha/helper-functions.php' );
@@ -52,12 +52,14 @@ class Wedding_Confirmation_Custom_Functionality {
 		wccf_include( 'includes/custom-db/class-custom-db-main.php' );
 		wccf_include( 'includes/services/class-confirmations-db-service.php' );
 		wccf_include( 'includes/contact-form/class-contact-form-main.php' );
+		wccf_include( 'includes/admin/class-admin-main.php' );
 		wccf_include( 'includes/public/class-public-api.php' );
 
 		// Initialise DBs, Services and other instances
 		$this->custom_DBs                = new Custom_DB_Main();
 		$this->services['confirmations'] = new Confirmations_DB_Service( $this->custom_DBs->get_confirmations_db_instance() );
 		$this->instances['contact_form'] = new Contact_Form_Main( $this->services['confirmations'] );
+		$this->instances['admin']        = new Admin_Main( $this->services['confirmations'] );
 	}
 
 	/**
