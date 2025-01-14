@@ -17,4 +17,34 @@ class Confirmations_DB_Service {
 
 		return $this->db->insert_new_confirmation_in_db( $confirmation_details );
 	}
+
+	public function get_all_confirmations() {
+		if ( ! current_user_can( 'manage_options' ) ) {
+			return array();
+		}
+
+		return $this->db->fetch_confirmations();
+	}
+
+	public function get_confirmations( $query_args = array() ) {
+		if ( ! current_user_can( 'manage_options' ) ) {
+			return array();
+		}
+
+		$defaults = array(
+			'search_term' => '',
+			'order_by'    => 'last_name',
+			'order'       => 'ASC',
+			'limit'       => 10,
+			'offset'      => 0,
+		);
+
+		$query_args = wp_parse_args( $query_args, $defaults );
+
+		return $this->db->fetch_confirmations( $query_args );
+	}
+
+	public function get_total_confirmations_count( $search_term = '' ) {
+		return $this->db->get_count( $search_term );
+	}
 }
