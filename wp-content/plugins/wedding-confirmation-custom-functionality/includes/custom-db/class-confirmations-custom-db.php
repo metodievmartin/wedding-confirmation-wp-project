@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Confirmations_Custom_DB {
 
 	private $charset;
-	private $full_table_name;
+	public $full_table_name;
 
 	// ========== Constructor ==========
 
@@ -43,6 +43,76 @@ class Confirmations_Custom_DB {
 
 		dbDelta( $sql ); // Execute the query
 	}
+
+	public function fetch_confirmations( $args = [] ) {
+		global $wpdb;
+
+		$query = "SELECT * FROM {$this->full_table_name}";
+		$where = [];
+
+		if ( empty( $args ) ) {
+			return $wpdb->get_results( $query, ARRAY_A );
+		}
+
+		// Add search condition
+		if ( ! empty( $args['search_term'] ) ) {
+			$where[] = $wpdb->prepare(
+				"(first_name LIKE %s OR last_name LIKE %s OR email LIKE %s)",
+				"%{$args['search_term']}%",
+				"%{$args['search_term']}%",
+				"%{$args['search_term']}%"
+			);
+		}
+
+		// Add WHERE clause
+		if ( ! empty( $where ) ) {
+			$query .= " WHERE " . implode( ' AND ', $where );
+		}
+
+		// Add ORDER BY clause
+		if ( ! empty( $args['order_by'] ) && ! empty( $args['order'] ) ) {
+			// Validate order_by and order
+			$valid_columns = [ 'first_name', 'last_name', 'num_guests', 'attendance_status' ];
+			$valid_orders  = [ 'ASC', 'DESC' ];
+
+			$order_by = in_array( $args['order_by'], $valid_columns, true ) ? $args['order_by'] : 'last_name';
+			$order    = in_array( strtoupper( $args['order'] ), $valid_orders, true ) ? strtoupper( $args['order'] ) : 'ASC';
+
+			// Add ORDER BY clause (validated inputs)
+			$query .= " ORDER BY {$order_by} {$order}";
+		}
+
+		// Add LIMIT and OFFSET
+		if ( ! empty( $args['limit'] ) ) {
+			$query .= $wpdb->prepare( " LIMIT %d OFFSET %d", $args['limit'], $args['offset'] );
+		}
+
+		return $wpdb->get_results( $query, ARRAY_A );
+	}
+
+	public function get_count( $search_term = '' ) {
+		global $wpdb;
+
+		$total_rows_query = "SELECT COUNT(*) FROM {$this->full_table_name}";
+
+		// Add search condition
+		if ( ! empty( $search_term ) ) {
+			$where[] = $wpdb->prepare(
+				"(first_name LIKE %s OR last_name LIKE %s OR email LIKE %s)",
+				"%{$search_term}%",
+				"%{$search_term}%",
+				"%{$search_term}%"
+			);
+		}
+
+		// Add WHERE clause
+		if ( ! empty( $where ) ) {
+			$total_rows_query .= " WHERE " . implode( ' AND ', $where );
+		}
+
+		return $wpdb->get_var( $total_rows_query );
+	}
+
 
 	/**
 	 * @throws Exception
