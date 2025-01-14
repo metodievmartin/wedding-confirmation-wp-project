@@ -1,6 +1,24 @@
 .hero-banner {
   background-color: #f1f1f1;
   margin-bottom: 0;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  min-height: 700px;
+  display: flex;
+  align-items: center;
+  color: white;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.3); /* Semi-transparent black overlay */
+    z-index: 1; /* Ensure it sits on top of the background image */
+  }
 
   .title-container {
     padding-top: rfs-value(100px);
@@ -9,5 +27,40 @@
 
   .image-container img {
     margin-bottom: rfs-value(-180px);
+  }
+}
+
+.hero-banner-container {
+  z-index: 2;
+}
+
+.wedding-date-heading {
+  position: relative;
+  padding-left: 45px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: -5px;
+    width: 36px;
+    height: 45px;
+    background-repeat: no-repeat;
+  }
+}
+
+
+.main-hero-title {
+  width: fit-content;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    right: -60px;
+    top: -50px;
+    width: 80px;
+    height: 84px;
+    background-repeat: no-repeat;
   }
 }

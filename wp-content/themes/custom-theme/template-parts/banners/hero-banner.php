@@ -13,29 +13,15 @@ $banner_image             = $banner_fields['hero_banner_image'] ?? null;
 
 <style>
     .hero-banner {
-        position: relative;
         background-image: url("<?php echo $banner_background_image['sizes']['hero-banner'] ?>");
-        background-size: cover;
-        background-position: center;
-        min-height: 700px;
-        display: flex;
-        align-items: center;
-        color: white;
     }
 
-    .hero-banner::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 100%;
-        background: rgba(0, 0, 0, 0.3); /* Semi-transparent black overlay */
-        z-index: 1; /* Ensure it sits on top of the background image */
+    .wedding-date-heading::before {
+        background-image: url(<?php echo get_asset_image_url('/hero/hero_shape1.png') ?>);
     }
 
-    .hero-banner-container {
-        z-index: 2;
+    .main-hero-title::after {
+        background-image: url(<?php echo get_asset_image_url('/hero/hero_shape2.png') ?>);
     }
 
 </style>
@@ -46,13 +32,13 @@ $banner_image             = $banner_fields['hero_banner_image'] ?? null;
             <div class="title-container col-lg-7 col-md-12">
 
 				<?php if ( ! empty( $hero_banner_wedding_date ) ): ?>
-                    <h3 class="mb-4">
+                    <h3 class="mb-4 wedding-date-heading">
 						<?php echo $hero_banner_wedding_date; ?>
                     </h3>
 				<?php endif; ?>
 
 				<?php if ( ! empty( $hero_banner_first_name ) && ! empty( $hero_banner_second_name ) ): ?>
-                    <h1 class="display-1 "><?php echo $hero_banner_first_name; ?><strong>
+                    <h1 class="display-1 main-hero-title"><?php echo $hero_banner_first_name; ?><strong>
                             & </strong> <?php echo $hero_banner_second_name; ?></h1>
 				<?php endif; ?>
 
