@@ -1,7 +1,7 @@
-<section class="contact-form page-section">
+<section class="contact-form-section page-section">
     <div class="container-xxl">
         <div class="row justify-content-center">
-            <div class="padding-container col-xl-6 col-lg-6">
+            <div class="padding-container col-lg-7 col-xl-6">
                 <div class="form-wrapper contact-form-container">
                     <form id="contact-form" class="needs-validation" novalidate>
 
