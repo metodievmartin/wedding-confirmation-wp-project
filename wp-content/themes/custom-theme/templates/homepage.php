@@ -15,6 +15,8 @@
 
 	<?php get_template_part( 'template-parts/homepage/contact-form' ); ?>
 
+	<?php get_template_part( 'template-parts/homepage/gallery-carousel' ); ?>
+
 </main>
 
 <?php get_footer(); ?>

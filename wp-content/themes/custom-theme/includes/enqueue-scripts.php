@@ -31,6 +31,11 @@ function theme_load_assets() {
 		$css_asset['dependencies'],
 		$css_asset['version']
 	);
+
+	wp_enqueue_style(
+		'owl-carousel-styles',
+		get_theme_asset_url( 'css/owl.carousel.min.css' )
+	);
 }
 
 add_action( 'wp_enqueue_scripts', 'theme_load_assets' );
