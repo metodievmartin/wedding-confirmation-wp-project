@@ -51,15 +51,19 @@ class Wedding_Confirmation_Custom_Functionality {
 		// Include classes
 		wccf_include( 'includes/custom-db/class-custom-db-main.php' );
 		wccf_include( 'includes/services/class-confirmations-db-service.php' );
+		wccf_include( 'includes/services/class-settings-service.php' );
 		wccf_include( 'includes/contact-form/class-contact-form-main.php' );
 		wccf_include( 'includes/admin/class-admin-main.php' );
 		wccf_include( 'includes/public/class-public-api.php' );
 
 		// Initialise DBs, Services and other instances
-		$this->custom_DBs                = new Custom_DB_Main();
+		$this->custom_DBs = new Custom_DB_Main();
+
 		$this->services['confirmations'] = new Confirmations_DB_Service( $this->custom_DBs->get_confirmations_db_instance() );
+		$this->services['settings']      = new WCCF_Settings_Service();
+
 		$this->instances['contact_form'] = new Contact_Form_Main( $this->services['confirmations'] );
-		$this->instances['admin']        = new Admin_Main( $this->services['confirmations'] );
+		$this->instances['admin']        = new WCCF_Admin_Main( $this->services['confirmations'], $this->services['settings'] );
 	}
 
 	/**
