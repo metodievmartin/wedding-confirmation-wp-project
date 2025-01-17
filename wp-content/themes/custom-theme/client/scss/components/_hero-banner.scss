@@ -23,6 +23,7 @@
   .title-container {
     padding-top: rfs-value(100px);
     padding-bottom: rfs-value(100px);
+    padding-left: rfs-value(20px);
   }
 
   .image-container img {
@@ -36,16 +37,17 @@
 
 .wedding-date-heading {
   position: relative;
-  padding-left: 45px;
+  padding-left: rfs-value(40px);
 
   &::before {
     content: '';
     position: absolute;
     left: 0;
     top: -5px;
-    width: 36px;
-    height: 45px;
+    width: 29px;
+    height: 36px;
     background-repeat: no-repeat;
+    background-size: cover;
   }
 }
 
@@ -53,14 +55,107 @@
 .main-hero-title {
   width: fit-content;
   position: relative;
+  font-weight: 500;
+  font-family: 'Playfair Display', serif;
+  font-size: rfs-value(48px);
+  line-height: 1.6;
 
-  &::after {
-    content: '';
-    position: absolute;
-    right: -60px;
-    top: -50px;
-    width: 80px;
-    height: 84px;
-    background-repeat: no-repeat;
+  .name.second {
+    position: relative;
+    padding-right: 45px;
+    white-space: nowrap;
+
+    &::after {
+      content: '';
+      position: absolute;
+      right: 5px;
+      top: -20px;
+      width: 45px;
+      height: 45px;
+      background-repeat: no-repeat;
+      background-size: cover;
+      transform: rotate(15deg);
+      z-index: -1;
+    }
+  }
+
+  .ampersand {
+    font-style: italic;
+    font-size: rfs-value(38px);
+    font-weight: 400;
+    padding: 0 rfs-value(7px) 0 rfs-value(5px);
+  }
+}
+
+.secondary-hero-title {
+  font-weight: 200;
+}
+
+@include media-breakpoint-up(sm) {
+  .main-hero-title {
+    font-size: rfs-value(60px);
+
+    .name.second {
+      padding-right: 55px;
+
+      &::after {
+        right: 5px;
+        top: -25px;
+        width: 55px;
+        height: 55px;
+      }
+    }
+
+    .ampersand {
+      font-size: rfs-value(40px);
+    }
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .main-hero-title {
+    font-size: rfs-value(75px);
+
+    .name.second {
+      &::after {
+        right: 0;
+        top: -25px;
+        width: 60px;
+        height: 60px;
+      }
+    }
+
+    .ampersand {
+      font-size: rfs-value(65px);
+    }
+  }
+
+  .wedding-date-heading {
+    padding-left: rfs-value(45px);
+
+    &::before {
+      top: -4px;
+      width: 31px;
+      height: 39px;
+    }
+  }
+}
+
+@include media-breakpoint-up(xl) {
+  .main-hero-title {
+    font-size: rfs-value(80px);
+
+    .name.second {
+      &::after {
+        right: 5px;
+        top: -30px;
+        width: 70px;
+        height: 70px;
+      }
+    }
+
+    .ampersand {
+      font-size: rfs-value(70px);
+    }
   }
 }
