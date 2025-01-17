@@ -2,9 +2,14 @@
 <html <?php language_attributes(); ?>>
 
 <head>
-	<meta charset="<?php bloginfo( 'charset' ); ?>">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <meta charset="<?php bloginfo( 'charset' ); ?>">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.0/css/all.css">-->
+    <script src="https://kit.fontawesome.com/730c4d423b.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+          rel="stylesheet">
 	<?php wp_head(); ?>
 
 </head>
@@ -14,7 +19,7 @@
 <?php wp_body_open(); ?>
 
 <header class="header">
-    <div class="container-xxl">
+    <div class="container-lg">
         <nav class="navbar navbar-light navbar-expand-lg">
             <a href="<?php echo esc_url( site_url( '/' ) ); ?>" class="navbar-brand">
 				<?php get_template_part( 'template-parts/header/logo' ); ?>
