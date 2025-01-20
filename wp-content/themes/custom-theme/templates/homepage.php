@@ -9,6 +9,8 @@
 <main>
 	<?php get_template_part( 'template-parts/banners/hero-banner' ); ?>
 
+	<?php get_template_part( 'template-parts/homepage/our-story' ); ?>
+
 	<?php get_template_part( 'template-parts/homepage/wedding-info' ); ?>
 
 	<?php get_template_part( 'template-parts/homepage/countdown-area' ); ?>
