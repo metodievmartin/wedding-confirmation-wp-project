@@ -25,6 +25,10 @@ export function init(carouselSelector = '.gallery-carousel-container') {
           nav: false,
           items: 8,
         },
+        1600: {
+          nav: false,
+          items: 12,
+        },
       },
     });
   }

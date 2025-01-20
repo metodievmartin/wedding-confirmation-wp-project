@@ -1,4 +1,4 @@
-<section class="wedding-info-section section-padding30 section-bg"
+<section id="wedding-info-section" class="wedding-info-section section-padding30 section-bg"
          style="background-image: url('<?php echo get_asset_image_url( 'gallery/section_bg1.png' ) ?>')">
     <div class="container-lg">
         <!-- Section Tittle -->

@@ -8,7 +8,6 @@ $hero_banner_wedding_date = $banner_fields['hero_banner_wedding_date'] ?? '';
 $banner_secondary_title   = $banner_fields['hero_banner_secondary_title'] ?? '';
 $banner_background_image  = $banner_fields['hero_banner_background_image'] ?? null;
 $banner_image             = $banner_fields['hero_banner_image'] ?? null;
-
 ?>
 
 <style>
