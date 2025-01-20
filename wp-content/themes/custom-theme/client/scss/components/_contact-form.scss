@@ -12,6 +12,7 @@
     background: $white;
     padding: rfs-value(70px) rfs-value(34px) rfs-value(70px) rfs-value(36px);
     position: relative;
+    min-height: rfs-value(550px);
 
     #contact-form {
       position: relative;
@@ -120,7 +121,7 @@
   background: $white;
   padding: rfs-value(15px);
   box-shadow: 0 0 86px 0 rgba(0, 0, 0, 0.06);
-  max-width: rfs-value(600px);
+  max-width: rfs-value(550px);
 }
 
 .nice-select {
@@ -159,7 +160,8 @@
 @include media-breakpoint-up(lg) {
   .contact-form-section {
     .form-wrapper {
-      padding: rfs-value(125px) rfs-value(70px) rfs-value(115px) rfs-value(70px);
+      padding: rfs-value(65px) rfs-value(60px);
+      min-height: rfs-value(700px);
 
       .shape-outer-flower .outer-bottom {
         left: rfs-value(240px);
