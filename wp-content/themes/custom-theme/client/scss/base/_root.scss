@@ -1,0 +1,15 @@
+html {
+  font-size: 16px; /* Default size for larger screens */
+}
+
+@media (max-width: 1600px) {
+  html {
+    font-size: 15px; /* Slightly smaller for mid-size screens */
+  }
+}
+
+@media (max-width: 1200px) {
+  html {
+    font-size: 14px; /* Smaller for smaller screens */
+  }
+}
