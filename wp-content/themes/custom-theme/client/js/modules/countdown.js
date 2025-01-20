@@ -9,11 +9,20 @@ export function init(countdownSelector = '#wccf-countdown') {
 
   const $countdown = $(countdownSelector);
   const targetDateString = $countdown.data('end-date');
-  const targetDate = new Date(targetDateString);
   const $daysContainer = $countdown.find('#cd-days');
   const $hoursContainer = $countdown.find('#cd-hours');
   const $minutesContainer = $countdown.find('#cd-minutes');
   const $secondsContainer = $countdown.find('#cd-seconds');
+
+  if (!targetDateString) {
+    $daysContainer.text('00');
+    $hoursContainer.text('00');
+    $minutesContainer.text('00');
+    $secondsContainer.text('00');
+    return;
+  }
+
+  const targetDate = new Date(targetDateString);
 
   function updateCountdown() {
     const now = new Date();
