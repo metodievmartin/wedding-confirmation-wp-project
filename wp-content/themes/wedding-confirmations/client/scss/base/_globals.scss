@@ -79,6 +79,11 @@ input:-internal-autofill-selected {
   }
 }
 
+.ornament-line-vector {
+  fill: var(--bs-primary);
+  max-width: rfs-value(500px);
+}
+
 @include media-breakpoint-down(sm) {
   .section-tittle img {
     width: 95%
