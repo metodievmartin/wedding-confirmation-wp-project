@@ -12,6 +12,7 @@
     -o-transition: all .3s ease-out 0s;
     transition: all .3s ease-out 0s;
     border: 1px solid transparent;
+    height: 100%;
 
     &.active {
       padding-bottom: rfs-value(70px);
@@ -31,6 +32,16 @@
         color: #2e3c40;
         font-size: rfs-value(25px);
         font-weight: 700;
+      }
+    }
+
+    .icon-container {
+      img {
+        image-rendering: auto;
+        background-color: transparent;
+        display: block;
+        width: rfs-value(60px);
+        height: rfs-value(60px);
       }
     }
 
@@ -87,7 +98,7 @@
 }
 
 .wedding-info-section .single-card:hover {
-  border: 1px solid #ff2828;
+  border: 1px solid var(--bs-primary);
 
   .find-on-map-button {
     &::after {

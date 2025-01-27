@@ -90,6 +90,10 @@
 }
 
 .contact-form-container {
+  .ornament-line-vector {
+    max-width: rfs-value(120px);
+  }
+
   .alert-message {
     display: none;
   }
@@ -159,6 +163,10 @@
 
 @include media-breakpoint-up(lg) {
   .contact-form-section {
+    .ornament-line-vector {
+      max-width: rfs-value(180px);
+    }
+
     .form-wrapper {
       padding: rfs-value(65px) rfs-value(60px);
       min-height: rfs-value(700px);

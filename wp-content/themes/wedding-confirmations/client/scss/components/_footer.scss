@@ -37,7 +37,7 @@
   bottom: -15px;
   height: 2px;
   width: rfs-value(50px);
-  background: $primary;
+  background: var(--bs-primary);
 }
 
 .footer-column ul li a:hover {

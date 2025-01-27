@@ -4,8 +4,15 @@
   padding-bottom: rfs-value(70px);
 
   .count-down-wrapper {
+    background-size: cover;
+    background-color: var(--bs-primary);
     padding: rfs-value(16px) rfs-value(10px);
     position: relative;
+
+    .corner-ornament {
+      width: 100%;
+      max-width: 35px;
+    }
 
     .background-img {
       pointer-events: none;
@@ -67,6 +74,10 @@
   .countdown-section {
     .count-down-wrapper {
       padding: rfs-value(40px) 0;
+
+      .corner-ornament {
+        max-width: 60px;
+      }
 
       span {
         font-size: rfs-value(36px);
