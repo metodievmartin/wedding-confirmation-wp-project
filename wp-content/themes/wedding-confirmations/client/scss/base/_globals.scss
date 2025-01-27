@@ -84,6 +84,38 @@ input:-internal-autofill-selected {
   max-width: rfs-value(500px);
 }
 
+.corner-ornament {
+  position: absolute;
+
+  &.top {
+    top: 5px;
+  }
+
+  &.bottom {
+    bottom: 5px;
+  }
+
+  &.left {
+    left: 5px;
+  }
+
+  &.right {
+    right: 5px;
+  }
+
+  &.top.left {
+    transform: rotate(90deg);
+  }
+
+  &.top.right {
+    transform: rotate(180deg);
+  }
+
+  &.bottom.right {
+    transform: rotate(270deg);
+  }
+}
+
 @include media-breakpoint-down(sm) {
   .section-tittle img {
     width: 95%
@@ -99,6 +131,27 @@ input:-internal-autofill-selected {
 
   .section-tittle.tittle-form h2 {
     font-size: rfs-value(24px);
+  }
+
+  .corner-ornament {
+    opacity: 0.9;
+    position: absolute;
+
+    &.top {
+      top: 10px;
+    }
+
+    &.bottom {
+      bottom: 10px;
+    }
+
+    &.left {
+      left: 10px;
+    }
+
+    &.right {
+      right: 10px;
+    }
   }
 }
 
