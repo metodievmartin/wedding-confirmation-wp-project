@@ -54,6 +54,7 @@ class Wedding_Confirmation_Custom_Functionality {
 		wccf_include( 'includes/services/class-settings-service.php' );
 		wccf_include( 'includes/contact-form/class-contact-form-main.php' );
 		wccf_include( 'includes/admin/class-admin-main.php' );
+		wccf_include( 'includes/info-card/class-info-card-main.php' );
 		wccf_include( 'includes/public/class-public-api.php' );
 
 		// Initialise DBs, Services and other instances
@@ -64,6 +65,7 @@ class Wedding_Confirmation_Custom_Functionality {
 
 		$this->instances['contact_form'] = new Contact_Form_Main( $this->services['confirmations'] );
 		$this->instances['admin']        = new WCCF_Admin_Main( $this->services['confirmations'], $this->services['settings'] );
+		$this->instances['info-card']    = new WCCF_Info_Card_Main();
 	}
 
 	/**
