@@ -127,7 +127,7 @@ function wccf(): WCCF_Public_API {
 	}
 
 	if ( ! isset( $wccf_api ) ) {
-		$wccf_api = new WCCF_Public_API( $wccf->services );
+		$wccf_api = new WCCF_Public_API( $wccf );
 	}
 
 	return $wccf_api;

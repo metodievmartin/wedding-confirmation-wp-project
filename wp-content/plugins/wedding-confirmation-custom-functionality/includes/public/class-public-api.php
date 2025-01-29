@@ -2,14 +2,21 @@
 
 class WCCF_Public_API {
 	private array $services;
+	private array $instances;
 
 	/**
 	 * Constructor for the public API.
 	 *
-	 * @param array $services
+	 * @param $main_instance
 	 */
-	public function __construct( $services ) {
-		$this->services = $services;
+	public function __construct( $main_instance ) {
+		if ( ! empty( $main_instance->services ) ) {
+			$this->services = $main_instance->services;
+		}
+
+		if ( ! empty( $main_instance->instances ) ) {
+			$this->instances = $main_instance->instances;
+		}
 	}
 
 	public function get_confirmations_end_date( bool $convert_to_local_time = true ): ?DateTime {
@@ -37,4 +44,12 @@ class WCCF_Public_API {
 	}
 
 	// Add more methods here to expose additional functionality if needed.
+	public function get_info_cards( $query_args = array() ) {
+		if ( empty( $this->instances['info-card'] ) ) {
+			// Return an empty WP_Query instance
+			return new WP_Query( array( 'post__in' => array( 0 ) ) );
+		}
+
+		return $this->instances['info-card']->get_info_cards_query( $query_args );
+	}
 }
