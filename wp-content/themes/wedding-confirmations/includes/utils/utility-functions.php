@@ -55,3 +55,26 @@ function sanitize_allowed_html( $content ) {
 	// Use wp_kses to sanitise the content.
 	return wp_kses( $content, $allowed_tags );
 }
+
+/**
+ * Format a date or time string.
+ *
+ * This function formats a raw date or time string according to the specified format
+ * and the site's locale. It works for both dates and times.
+ *
+ * @param string $raw_value The raw date or time string. Use 'Y-m-d' format.
+ * @param string $format Optional. The format for display. Default is 'F j, Y' for dates.
+ *
+ * @return string The formatted date, or an empty string if the input date is invalid.
+ */
+function custom_format_datetime( $raw_value, $format = 'F j, Y' ) {
+	// Validate and convert the raw date into a timestamp
+	$timestamp = strtotime( $raw_value );
+
+	if ( ! $timestamp ) {
+		return '';
+	}
+
+	// Format the date according to the site's locale
+	return date_i18n( $format, $timestamp );
+}
