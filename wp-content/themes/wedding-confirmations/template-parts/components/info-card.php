@@ -28,6 +28,7 @@ $card_url     = $args['card_url'] ?? '';
 
                 <li>
                     <a href="<?php echo esc_url( $card_url ); ?>"
+                       target="_blank"
                        class="mt-3 find-on-map-button text-decoration-none text-reset">
                         <i class="far fa-map"></i> Check out the map
                     </a>
