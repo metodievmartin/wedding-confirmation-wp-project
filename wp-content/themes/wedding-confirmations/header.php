@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html <?php language_attributes(); ?> <?php echo wccf()->get_colour_data_attribute() ?>>
+<html <?php language_attributes(); ?>>
 
 <head>
     <meta charset="<?php bloginfo( 'charset' ); ?>">
