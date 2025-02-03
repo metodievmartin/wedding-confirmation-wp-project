@@ -14,6 +14,7 @@
 // Project Custom Styles
 // ============================================================================
 
+@import 'base/root';
 @import 'base/typography';
 @import 'base/globals';
 
@@ -25,6 +26,11 @@
 @import 'components/wedding-info';
 @import 'components/countdown';
 @import 'components/contact-form';
+@import 'components/gallery';
+@import 'components/our-story';
 
 @import 'pages/contacts';
 @import 'pages/homepage';
+
+// overwrites CSS variables - has to be included last
+@import 'base/colour-variables';

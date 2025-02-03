@@ -22,4 +22,34 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   }
+
+  // Colour Picker Dropdown
+  const dropdownButton = document.getElementById('dropdown-button');
+  const dropdownMenu = document.getElementById('color-options');
+  const hiddenInput = document.getElementById('selected-color-id');
+
+  if (dropdownButton && dropdownMenu && hiddenInput) {
+    dropdownButton.addEventListener('click', function() {
+      dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+    });
+
+    dropdownMenu.addEventListener('click', function(event) {
+      if (event.target.closest('.dropdown-item')) {
+        const selectedItem = event.target.closest('.dropdown-item');
+        const selectedColourId = selectedItem.getAttribute('data-colour-id');
+        const selectedColourHex = selectedItem.getAttribute('data-colour-hex');
+        const selectedColourName = selectedItem.getAttribute('data-colour-name');
+
+        dropdownButton.innerHTML = `<span class="color-box" style="background-color: ${selectedColourHex};"></span> ${selectedColourName}`;
+        hiddenInput.value = selectedColourId;
+        dropdownMenu.style.display = 'none';
+      }
+    });
+
+    document.addEventListener('click', function(event) {
+      if (!dropdownButton.contains(event.target) && !dropdownMenu.contains(event.target)) {
+        dropdownMenu.style.display = 'none';
+      }
+    });
+  }
 });

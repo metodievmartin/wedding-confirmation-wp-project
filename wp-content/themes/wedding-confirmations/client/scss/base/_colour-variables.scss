@@ -1,0 +1,69 @@
+:root {
+  --bs-primary: #ff2828 !important;
+  --bs-primary-hover: #e02424 !important;
+  --bs-primary-active: #c92020 !important;
+  --bs-primary-rgb: 255, 40, 40 !important;
+}
+
+html[data-colour='red'] {
+  --bs-primary: #ff2828 !important;
+  --bs-primary-hover: #e02424 !important;
+  --bs-primary-active: #c92020 !important;
+  --bs-primary-rgb: 255, 40, 40 !important;
+}
+
+html[data-colour='pink'] {
+  --bs-primary: #E3959E !important;
+  --bs-primary-hover: #cc8690 !important;
+  --bs-primary-active: #b57781 !important;
+  --bs-primary-rgb: 227, 149, 158 !important;
+}
+
+html[data-colour='deep-blue'] {
+  --bs-primary: #07295E !important;
+  --bs-primary-hover: #062254 !important;
+  --bs-primary-active: #051b4a !important;
+  --bs-primary-rgb: 7, 41, 94 !important;
+}
+
+html[data-colour='wine'] {
+  --bs-primary: #792225 !important;
+  --bs-primary-hover: #6b1e21 !important;
+  --bs-primary-active: #5d1a1d !important;
+  --bs-primary-rgb: 121, 34, 37 !important;
+}
+
+html[data-colour='peach'] {
+  --bs-primary: #E56667 !important;
+  --bs-primary-hover: #cc5c5d !important;
+  --bs-primary-active: #b35253 !important;
+  --bs-primary-rgb: 229, 102, 103 !important;
+}
+
+html[data-colour='burgundy'] {
+  --bs-primary: #571232 !important;
+  --bs-primary-hover: #5D1336 !important;
+  --bs-primary-active: #5F1336 !important;
+  --bs-primary-rgb: 87, 18, 50 !important;
+}
+
+html[data-colour='dark-green'] {
+  --bs-primary: #0C3B3C !important;
+  --bs-primary-hover: #0E4546 !important;
+  --bs-primary-active: #0E4647 !important;
+  --bs-primary-rgb: 13, 64, 65 !important;
+}
+
+html[data-colour='taupe'] {
+  --bs-primary: #987462 !important;
+  --bs-primary-hover: #886857 !important;
+  --bs-primary-active: #785c4d !important;
+  --bs-primary-rgb: 152, 116, 98 !important;
+}
+
+html[data-colour='deep-purple'] {
+  --bs-primary: #35005F !important;
+  --bs-primary-hover: #390066 !important;
+  --bs-primary-active: #3A0068 !important;
+  --bs-primary-rgb: 53, 0, 95 !important;
+}

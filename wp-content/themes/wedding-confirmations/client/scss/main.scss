@@ -63,3 +63,6 @@
 
 @import 'pages/contacts';
 @import 'pages/homepage';
+
+// overwrites CSS variables - has to be included last
+@import 'base/colour-variables';

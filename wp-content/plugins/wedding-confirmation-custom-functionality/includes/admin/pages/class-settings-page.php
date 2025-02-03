@@ -88,17 +88,18 @@ class WCCF_Settings_Page {
 
 		$end_date_option_id = $this->settings_service::CONFIRMATIONS_END_DATE;
 		$timezone_option_id = $this->settings_service::CONFIRMATIONS_END_DATE_TIMEZONE;
+		$colour_picker_id   = $this->settings_service::COLOUR_PICKER_OPTION;
 
 		$date_time_utc = isset( $_POST[ $end_date_option_id ] ) ? sanitize_text_field( $_POST[ $end_date_option_id ] ) : '';
 		$timezone      = isset( $_POST[ $timezone_option_id ] ) ? sanitize_text_field( $_POST[ $timezone_option_id ] ) : '';
+		$colour_picker = isset( $_POST[ $colour_picker_id ] ) ? sanitize_text_field( $_POST[ $colour_picker_id ] ) : '';
 
-		error_log( '$date_time_utc: ' . $date_time_utc );
-		error_log( '$timezone: ' . $timezone );
-
-		if ( $date_time_utc && $timezone ) {
+		if ( $date_time_utc && $timezone && $colour_picker ) {
 			// Save both UTC datetime and timezone
 			$this->settings_service->save_confirmations_end_date( $date_time_utc );
 			$this->settings_service->save_confirmations_end_date_timezone( $timezone );
+
+			$this->settings_service->save_selected_colour( $colour_picker );
 
 			wp_redirect( admin_url( 'admin.php?page=' . $this->get_page_slug() . '&message=success' ) );
 			exit;
@@ -113,6 +114,10 @@ class WCCF_Settings_Page {
 		$conf_end_date_timezone_option_name = $this->settings_service::CONFIRMATIONS_END_DATE_TIMEZONE;
 		$conf_end_date_picker_id            = 'wccf_date_time_picker';
 		$end_date                           = $this->settings_service->get_confirmations_end_date();
+
+		$colour_picker_option_name     = $this->settings_service::COLOUR_PICKER_OPTION;
+		$colour_picker_selected_colour = $this->settings_service->get_selected_colour();
+		$colors                        = $this->settings_service->get_all_colours();
 		?>
 
         <div class="wrap">
@@ -140,6 +145,14 @@ class WCCF_Settings_Page {
                        value="">
 
                 <table class="form-table">
+                    <tr class="end-date-info-message-row">
+                        <td colspan="2">
+                            <div class="info-message">
+								<?php echo $this->get_end_date_info_message( $end_date ); ?>
+                            </div>
+                        </td>
+                    </tr>
+
                     <tr>
                         <th scope="row">
                             <label for="<?php echo $conf_end_date_picker_id ?>">
@@ -147,18 +160,46 @@ class WCCF_Settings_Page {
                             </label>
                         </th>
                         <td>
-                            <input type="datetime-local" id="<?php echo $conf_end_date_picker_id ?>"
+                            <input type="datetime-local"
+                                   id="<?php echo $conf_end_date_picker_id ?>"
+                                   class="datepicker"
                                    value="<?php echo esc_attr( $this->get_formatted_date( $end_date ) ); ?>"
                                    required>
                         </td>
                     </tr>
-                    <tr class="end-date-info-message-row">
-                        <td colspan="2">
-                            <div class="info-message">
-								<?php echo $this->get_end_date_info_message( $end_date ); ?>
+
+                    <tr>
+                        <th scope="row">
+                            <label for="color-picker">Select a Colour:</label>
+                        </th>
+                        <td>
+                            <div class="custom-dropdown">
+                                <button type="button" id="dropdown-button" class="dropdown-button">
+                                    <span class="color-box"
+                                          style="background-color: <?php echo esc_attr( $colour_picker_selected_colour['hex'] ); ?>;"></span>
+									<?php echo esc_html( $colour_picker_selected_colour['name'] ); ?>
+                                </button>
+
+                                <ul id="color-options" class="dropdown-menu">
+
+									<?php foreach ( $colors as $colour ): ?>
+                                        <li class="dropdown-item"
+                                            data-colour-id="<?php echo esc_attr( $colour['id'] ); ?>"
+                                            data-colour-hex="<?php echo esc_attr( $colour['hex'] ); ?>"
+                                            data-colour-name="<?php echo esc_attr( $colour['name'] ); ?>">
+                                            <span class="color-box"
+                                                  style="background-color: <?php echo esc_attr( $colour['hex'] ); ?>;"></span>
+											<?php echo esc_html( $colour['name'] ); ?>
+                                        </li>
+									<?php endforeach; ?>
+
+                                </ul>
+
+                                <input type="hidden" id="selected-color-id"
+                                       name="<?php echo esc_attr( $colour_picker_option_name ); ?>"
+                                       value="<?php echo esc_attr( $colour_picker_selected_colour['id'] ); ?>">
                             </div>
                         </td>
-
                     </tr>
                 </table>
 
@@ -191,7 +232,7 @@ class WCCF_Settings_Page {
 		$formatted_timezone = $date->getTimezone()->getName();
 
 		return sprintf(
-			'Accepting new confirmations will be closed on <strong>%s</strong> at <strong>%s</strong> (%s time).',
+			'&#9432; Accepting new confirmations will be closed on <strong>%s</strong> at <strong>%s</strong> (%s time).',
 			$formatted_date,
 			$formatted_time,
 			$formatted_timezone

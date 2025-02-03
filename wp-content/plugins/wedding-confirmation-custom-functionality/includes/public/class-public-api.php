@@ -43,7 +43,22 @@ class WCCF_Public_API {
 		return $this->services['settings']->has_confirmations_end_date_passed();
 	}
 
-	// Add more methods here to expose additional functionality if needed.
+	public function get_selected_colour() {
+		if ( empty( $this->services['settings'] ) ) {
+			return array( 'hex' => '', 'name' => '' );
+		}
+
+		return $this->services['settings']->get_selected_colour();
+	}
+
+	public function get_colour_data_attribute(): string {
+		if ( empty( $this->services['settings'] ) ) {
+			return '';
+		}
+
+		return $this->services['settings']->get_colour_data_attribute();
+	}
+
 	public function get_info_cards( $query_args = array() ) {
 		if ( empty( $this->instances['info-card'] ) ) {
 			// Return an empty WP_Query instance

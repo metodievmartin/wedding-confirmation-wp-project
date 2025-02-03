@@ -14,9 +14,12 @@ $navbar-color: #333333;
 // Colours
 // ============================================================================
 
-//$primary: #F0018B;
+
+//$primary: #0C3B3C;
+
+
+//$primary: var(--bs-primary);
 //$primary: #8003fc;
-$primary: #ff2828;
 $secondary: #89C63F;
 $body-bg: #FAF9F6;
 $header-bg: #ECECEC;
@@ -26,7 +29,7 @@ $text-dark: #333333;
 $text-muted: #6C757D;
 $hover-grey: #ADB5BD;
 
-$navbar-light-active-color: $primary;
+//$navbar-light-active-color: $primary;
 
 // ============================================================================
 // Breakpoints
