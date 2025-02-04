@@ -22,8 +22,7 @@ $has_end_date_passed = wccf()->has_end_date_passed();
                                 <div class="col-lg-12">
                                     <div class="section-tittle tittle-form text-center mb-3">
                                         <h2>Are you attending?</h2>
-                                        <img src="<?php echo get_asset_image_url( 'gallery/tittle_img2.png' ) ?>"
-                                             alt="">
+										<?php get_template_part( 'template-parts/components/ornament-line-small' ); ?>
                                     </div>
                                 </div>
                             </div>
@@ -100,7 +99,7 @@ $has_end_date_passed = wccf()->has_end_date_passed();
 									<?php endif; ?>
 
                                     <div class="submit-info text-center mt-4">
-                                        <button class="btn btn-primary btn-lg" type="submit">Confirm now</button>
+                                        <button class="btn btn-wedc-primary btn-lg" type="submit">Confirm now</button>
                                     </div>
                                 </div>
                             </div>

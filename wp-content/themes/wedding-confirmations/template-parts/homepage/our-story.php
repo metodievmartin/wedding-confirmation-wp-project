@@ -23,7 +23,7 @@ $our_story_card_image       = $our_story_section_fields['our_story_card_image'] 
         <div class="row g-0 justify-content-center">
             <div class="col-10 col-sm-7 col-md-6 col-lg-5">
                 <div class="story-caption background-img"
-                     style="background-image: url('<?php echo get_asset_image_url( '/bg/bg-pattern-25.png' ) ?>');">
+                     style="background-image: url('<?php echo get_asset_image_url( '/bg/bg-pattern-main-25.png' ) ?>');">
                     <div class="story-details">
                         <h4><?php echo esc_html( $our_story_card_title ); ?></h4>
 
