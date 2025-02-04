@@ -111,8 +111,9 @@ $has_end_date_passed = wccf()->has_end_date_passed();
                         <div class="card text-center">
                             <div class="card-body">
                                 <h3 class="card-title">Confirmation is closed</h3>
-                                <img src="<?php echo get_asset_image_url( 'gallery/tittle_img2.png' ) ?>"
-                                     alt="">
+                                
+								<?php get_template_part( 'template-parts/components/ornament-line-small' ); ?>
+
                                 <p class="card-text mt-3">We are no longer taking new confirmations. Thank you if you've
                                     already responded!</p>
                             </div>
@@ -132,7 +133,8 @@ $has_end_date_passed = wccf()->has_end_date_passed();
 
                     <!-- Shape Inner Flower -->
                     <div class="shape-inner-flower">
-                        <img src="<?php echo get_asset_image_url( 'gallery/shape2.png' ) ?>" class="shpe2" alt="">
+                        <img src="<?php echo get_asset_image_url( 'bg/contact-form-bg-shape.png' ) ?>" class="shpe2"
+                             alt="">
                     </div>
                     <!-- Shape Outer Flower -->
                     <div class="shape-outer-flower">

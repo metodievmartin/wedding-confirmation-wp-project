@@ -6,7 +6,7 @@
   .count-down-wrapper {
     background-size: cover;
     background-color: var(--bs-primary);
-    padding: rfs-value(16px) rfs-value(10px);
+    padding: rfs-value(30px) rfs-value(10px);
     position: relative;
 
     .corner-ornament {
@@ -73,7 +73,7 @@
 @include media-breakpoint-up(lg) {
   .countdown-section {
     .count-down-wrapper {
-      padding: rfs-value(40px) 0;
+      padding: rfs-value(45px) 0;
 
       .corner-ornament {
         max-width: 60px;
