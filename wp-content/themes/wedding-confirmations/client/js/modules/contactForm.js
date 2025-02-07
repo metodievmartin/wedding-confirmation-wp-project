@@ -54,6 +54,7 @@ export function init(contactFormSelector = '#contact-form') {
       guest_last_name: $contactForm.find('#guest_last_name').val()?.trim(),
       num_guests: $contactForm.find('#num_guests').val()?.trim(),
       guest_email: $contactForm.find('#guest_email').val()?.trim(),
+      rsvp_confirmation: $contactForm.find('#rsvp_confirmation').val()?.trim(),
       additional_info: $contactForm.find('#additional_info').val()?.trim(),
       recaptcha_action: $recaptchaAction.val(),
       recaptcha_token: $recaptchaToken.val(),

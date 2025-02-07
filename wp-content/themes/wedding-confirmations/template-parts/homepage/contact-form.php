@@ -78,6 +78,14 @@ $has_end_date_passed = wccf()->has_end_date_passed();
                                         <option value="4">4 Guests</option>
                                     </select>
                                 </div>
+                                <div class="col-lg-12 form-row-container">
+                                    <select id="rsvp_confirmation" name="rsvp_confirmation"
+                                            class="form-select nice-select form-select-lg"
+                                            aria-label="Large select example">
+                                        <option selected value="true">Confirm</option>
+                                        <option value="false">Decline</option>
+                                    </select>
+                                </div>
                                 <div class="col-lg-12">
                                     <div class="form-floating form-box message-icon mb-3">
                                         <textarea class="form-control additional-info"
@@ -96,6 +104,17 @@ $has_end_date_passed = wccf()->has_end_date_passed();
                                             <a href="https://policies.google.com/terms">Terms of Service</a> apply.
                                         </div>
 									<?php endif; ?>
+
+                                    <div class="form-submission-alert alert d-none alert-dismissible my-4" role="alert">
+                                        <div class="alert-message type-success">
+											<?php esc_html_e( 'Submitted successfully!', 'wedding_confirmation' ); ?>
+                                        </div>
+                                        <div class="alert-message type-error">
+											<?php esc_html_e( 'Sorry, there has been an error.', 'wedding_confirmation' ); ?>
+                                        </div>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                                aria-label="Close"></button>
+                                    </div>
 
                                     <div class="submit-info text-center mt-4">
                                         <button class="btn btn-wedc-primary btn-lg px-5" type="submit">Submit</button>
@@ -119,16 +138,6 @@ $has_end_date_passed = wccf()->has_end_date_passed();
                         </div>
 
 					<?php endif; ?>
-
-                    <div class="form-submission-alert alert d-none alert-dismissible my-4" role="alert">
-                        <div class="alert-message type-success">
-							<?php esc_html_e( 'Your message has been sent successfully!', 'wedding_confirmation' ); ?>
-                        </div>
-                        <div class="alert-message type-error">
-							<?php esc_html_e( 'Sorry, there has been an error. Try again later.', 'wedding_confirmation' ); ?>
-                        </div>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
 
                     <!-- Shape Inner Flower -->
                     <div class="shape-inner-flower">

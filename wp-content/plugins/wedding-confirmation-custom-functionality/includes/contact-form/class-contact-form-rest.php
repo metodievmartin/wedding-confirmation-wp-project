@@ -60,13 +60,14 @@ class Contact_Form_Rest {
 		$params = $request->get_params();
 
 		// Extract parameters
-		$guest_first_name = sanitize_text_field( $params['guest_first_name'] ?? '' );
-		$guest_last_name  = sanitize_text_field( $params['guest_last_name'] ?? '' );
-		$guest_email      = sanitize_email( $params['guest_email'] ?? '' );
-		$num_guests       = absint( $params['num_guests'] ?? 1 );
-		$additional_info  = sanitize_textarea_field( $params['additional_info'] ?? '' );
-		$recaptcha_token  = sanitize_text_field( $params['recaptcha_token'] ?? '' );
-		$recaptcha_action = sanitize_text_field( $params['recaptcha_action'] ?? '' );
+		$guest_first_name  = sanitize_text_field( $params['guest_first_name'] ?? '' );
+		$guest_last_name   = sanitize_text_field( $params['guest_last_name'] ?? '' );
+		$guest_email       = sanitize_email( $params['guest_email'] ?? '' );
+		$num_guests        = absint( $params['num_guests'] ?? 1 );
+		$rsvp_confirmation = sanitize_textarea_field( $params['rsvp_confirmation'] ?? 'true' );
+		$additional_info   = sanitize_textarea_field( $params['additional_info'] ?? '' );
+		$recaptcha_token   = sanitize_text_field( $params['recaptcha_token'] ?? '' );
+		$recaptcha_action  = sanitize_text_field( $params['recaptcha_action'] ?? '' );
 
 		// Run the reCAPTCHA validation if the service is enabled
 		if ( wccf_is_recaptcha_enabled() ) {
@@ -98,11 +99,12 @@ class Contact_Form_Rest {
 		}
 
 		$confirmation_details = array(
-			'first_name'      => $guest_first_name,
-			'last_name'       => $guest_last_name,
-			'email'           => $guest_email,
-			'additional_info' => $additional_info,
-			'num_guests'      => $num_guests,
+			'first_name'        => $guest_first_name,
+			'last_name'         => $guest_last_name,
+			'email'             => $guest_email,
+			'additional_info'   => $additional_info,
+			'num_guests'        => $num_guests,
+			'rsvp_confirmation' => filter_var( $rsvp_confirmation, FILTER_VALIDATE_BOOLEAN ),
 		);
 
 		try {

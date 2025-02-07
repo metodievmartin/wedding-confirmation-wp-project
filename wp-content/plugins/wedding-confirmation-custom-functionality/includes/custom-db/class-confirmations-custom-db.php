@@ -122,11 +122,12 @@ class Confirmations_Custom_DB {
 
 		// Sanitise and validate data
 		$sanitised_data = [
-			'first_name'      => sanitize_text_field( $data['first_name'] ?? '' ),
-			'last_name'       => sanitize_text_field( $data['last_name'] ?? '' ),
-			'email'           => sanitize_email( $data['email'] ?? '' ),
-			'num_guests'      => absint( $data['num_guests'] ?? 1 ),
-			'additional_info' => sanitize_textarea_field( $data['additional_info'] ?? '' ),
+			'first_name'        => sanitize_text_field( $data['first_name'] ?? '' ),
+			'last_name'         => sanitize_text_field( $data['last_name'] ?? '' ),
+			'email'             => sanitize_email( $data['email'] ?? '' ),
+			'num_guests'        => absint( $data['num_guests'] ?? 1 ),
+			'additional_info'   => sanitize_textarea_field( $data['additional_info'] ?? '' ),
+			'rsvp_confirmation' => filter_var( $data['rsvp_confirmation'], FILTER_VALIDATE_BOOLEAN ),
 		];
 
 		// Validate required fields
@@ -136,11 +137,12 @@ class Confirmations_Custom_DB {
 
 		// Prepare the SQL query using placeholders
 		$sql = $wpdb->prepare(
-			"INSERT INTO {$this->full_table_name} (first_name, last_name, email, num_guests, additional_info) VALUES (%s, %s, %s, %d, %s)",
+			"INSERT INTO {$this->full_table_name} (first_name, last_name, email, num_guests, attendance_status, additional_info) VALUES (%s, %s, %s, %d, %s, %s)",
 			$sanitised_data['first_name'],
 			$sanitised_data['last_name'],
 			$sanitised_data['email'],
 			$sanitised_data['num_guests'],
+			$sanitised_data['rsvp_confirmation'] ? 'confirmed' : 'declined',
 			$sanitised_data['additional_info']
 		);
 
