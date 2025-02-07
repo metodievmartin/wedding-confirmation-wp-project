@@ -16,7 +16,7 @@
     left: 0;
     height: 100%;
     width: 100%;
-    background: rgba(0, 0, 0, 0.3); /* Semi-transparent black overlay */
+    background: rgba(0, 0, 0, 0.35); /* Semi-transparent black overlay */
     z-index: 1; /* Ensure it sits on top of the background image */
   }
 
@@ -59,6 +59,7 @@
   font-family: 'Playfair Display', serif;
   font-size: rfs-value(48px);
   line-height: 1.6;
+  font-style: italic;
 
   .name.second {
     position: relative;
@@ -88,7 +89,7 @@
 }
 
 .secondary-hero-title {
-  font-weight: 200;
+  font-weight: 300;
 }
 
 @include media-breakpoint-up(sm) {
@@ -147,8 +148,8 @@
 
     .name.second {
       &::after {
-        right: 5px;
-        top: -30px;
+        right: -10px;
+        top: -25px;
         width: 70px;
         height: 70px;
       }
@@ -156,6 +157,16 @@
 
     .ampersand {
       font-size: rfs-value(70px);
+    }
+  }
+
+  .wedding-date-heading {
+    padding-left: rfs-value(50px);
+
+    &::before {
+      top: -7px;
+      width: 37px;
+      height: 45px;
     }
   }
 }

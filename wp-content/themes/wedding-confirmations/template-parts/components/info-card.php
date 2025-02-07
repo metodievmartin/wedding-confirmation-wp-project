@@ -18,7 +18,9 @@ $card_url     = $args['card_url'] ?? '';
         </div>
         <div class="card-bottom">
             <ul class="list-unstyled">
-                <li><i class="fas fa-calendar-alt"></i><?php echo esc_html( $card_date ); ?></li>
+                <li class="text-capitalize">
+                    <i class="fas fa-calendar-alt"></i><?php echo esc_html( $card_date ); ?>
+                </li>
                 <li><i class="far fa-clock"></i><?php echo esc_html( $card_time ); ?></li>
                 <li><i class="fas fa-map-marker-alt"></i><?php echo esc_html( $card_place ); ?></li>
 

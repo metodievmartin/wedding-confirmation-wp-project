@@ -31,6 +31,7 @@
     background-color: var(--bs-primary);
     position: relative;
     overflow: hidden;
+    font-family: 'Playfair Display', serif;
 
     .flower-ornament {
       position: absolute;
@@ -50,7 +51,7 @@
       padding-bottom: rfs-value(70px);
       padding-left: rfs-value(105px);
       padding-right: rfs-value(50px);
-      min-height: rfs-value(440px);
+      min-height: rfs-value(530px);
 
       @include media-breakpoint-up(md) {
         padding-left: rfs-value(121px);
@@ -60,34 +61,29 @@
 
       @include media-breakpoint-up(lg) {
         padding-left: rfs-value(120px);
-        //padding-top: rfs-value(110px);
-        //padding-bottom: rfs-value(110px);
       }
 
       h4 {
-        font-size: 30px;
+        font-size: rfs-value(29px);
         font-weight: 400;
         color: #fff;
         text-transform: capitalize;
-        margin-bottom: 21px;
+        margin-bottom: rfs-value(21px);
+        font-style: italic;
       }
 
       p {
         color: #fff;
-        font-size: rfs-value(14px);
+        font-size: rfs-value(15px);
+        font-family: $font-family-base;
+        font-style: italic;
+        font-weight: 300;
       }
     }
 
     &.background-img {
-      //width: 291px;
-      //height: 395px;
       background-repeat: no-repeat;
       background-size: cover;
-
-      @include media-breakpoint-up(sm) {
-        //width: 474px;
-        //height: $max-card-width;
-      }
     }
   }
 }
@@ -95,6 +91,12 @@
 @include media-breakpoint-up(lg) {
   .our-story-section {
     .story-caption {
+      .story-details {
+        h4 {
+          font-size: rfs-value(32);
+        }
+      }
+
       .corner-ornament {
         max-width: rfs-value(75px);
       }
