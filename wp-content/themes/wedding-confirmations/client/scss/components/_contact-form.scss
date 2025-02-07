@@ -19,6 +19,14 @@
       z-index: 1;
     }
 
+    .form-row-container {
+      margin-bottom: rfs-value(12px);
+    }
+
+    .additional-info {
+      height: rfs-value(80px);
+    }
+
     .shape-outer-flower {
       .outer-bottom {
         position: absolute;
@@ -91,7 +99,7 @@
 
 .contact-form-container {
   .ornament-line-vector {
-    max-width: rfs-value(120px);
+    max-width: rfs-value(128px);
   }
 
   .alert-message {
@@ -123,7 +131,7 @@
 
 .padding-container {
   background: $white;
-  padding: rfs-value(15px);
+  padding: rfs-value(10px);
   box-shadow: 0 0 86px 0 rgba(0, 0, 0, 0.06);
   max-width: rfs-value(550px);
 }
@@ -146,25 +154,17 @@
   background-color: transparent;
 }
 
-/* Media Queries */
-@media (max-width: 575px) {
-  .contact-form-section .form-wrapper {
-    padding: rfs-value(70px) rfs-value(34px) rfs-value(70px) rfs-value(36px);
-  }
 
-  .contact-form-section .form-wrapper textarea {
-    padding: rfs-value(30px) rfs-value(42px);
-  }
-
-  .submit-info {
-    text-align: center;
+@include media-breakpoint-up(sm) {
+  .padding-container {
+    padding: rfs-value(16px);
   }
 }
 
 @include media-breakpoint-up(lg) {
   .contact-form-section {
     .ornament-line-vector {
-      max-width: rfs-value(180px);
+      max-width: rfs-value(165px);
     }
 
     .form-wrapper {

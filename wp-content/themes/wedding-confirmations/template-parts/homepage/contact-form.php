@@ -28,7 +28,7 @@ $has_end_date_passed = wccf()->has_end_date_passed();
                             </div>
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <div class="form-floating mb-3">
+                                    <div class="form-floating form-row-container">
                                         <input type="text" class="form-control" id="guest_first_name"
                                                name="guest_first_name"
                                                placeholder="<?php esc_attr_e( 'First Name', 'wedding_confirmation' ); ?>"
@@ -42,7 +42,7 @@ $has_end_date_passed = wccf()->has_end_date_passed();
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
-                                    <div class="form-floating mb-3">
+                                    <div class="form-floating form-row-container">
                                         <input type="text" class="form-control" id="guest_last_name"
                                                name="guest_last_name"
                                                placeholder="<?php esc_attr_e( 'Last Name', 'wedding_confirmation' ); ?>"
@@ -56,7 +56,7 @@ $has_end_date_passed = wccf()->has_end_date_passed();
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
-                                    <div class="form-floating mb-3">
+                                    <div class="form-floating form-row-container">
                                         <input type="email" class="form-control" id="guest_email" name="guest_email"
                                                placeholder="<?php esc_attr_e( 'Your Email', 'wedding_confirmation' ); ?>"
                                                required>
@@ -68,9 +68,9 @@ $has_end_date_passed = wccf()->has_end_date_passed();
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-12 mb-3">
+                                <div class="col-lg-12 form-row-container">
                                     <select id="num_guests" name="num_guests"
-                                            class="form-select nice-select form-select-lg mb-3"
+                                            class="form-select nice-select form-select-lg"
                                             aria-label="Large select example">
                                         <option selected value="1">1 Guest</option>
                                         <option value="2">2 Guests</option>
@@ -80,10 +80,9 @@ $has_end_date_passed = wccf()->has_end_date_passed();
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="form-floating form-box message-icon mb-3">
-                                        <textarea class="form-control"
+                                        <textarea class="form-control additional-info"
                                                   id="additional_info" name="additional_info"
                                                   placeholder="<?php esc_attr_e( 'Add additional info here', 'wedding_confirmation' ); ?>"
-                                                  style="height: 100px"
                                         ></textarea>
                                         <label for="additional_info">
 											<?php esc_html_e( 'Additional info', 'wedding_confirmation' ); ?>
@@ -99,7 +98,7 @@ $has_end_date_passed = wccf()->has_end_date_passed();
 									<?php endif; ?>
 
                                     <div class="submit-info text-center mt-4">
-                                        <button class="btn btn-wedc-primary btn-lg" type="submit">Confirm now</button>
+                                        <button class="btn btn-wedc-primary btn-lg px-5" type="submit">Submit</button>
                                     </div>
                                 </div>
                             </div>
@@ -111,7 +110,7 @@ $has_end_date_passed = wccf()->has_end_date_passed();
                         <div class="card text-center">
                             <div class="card-body">
                                 <h3 class="card-title">Confirmation is closed</h3>
-                                
+
 								<?php get_template_part( 'template-parts/components/ornament-line-small' ); ?>
 
                                 <p class="card-text mt-3">We are no longer taking new confirmations. Thank you if you've

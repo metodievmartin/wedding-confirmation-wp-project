@@ -48,10 +48,11 @@ input:-internal-autofill-selected {
 
 .section-tittle {
   h2 {
-    font-size: rfs-value(28px);
+    font-size: rfs-value(30px);
     line-height: 1.3;
     font-weight: 700;
     color: #212121;
+    font-family: 'Playfair Display', serif;
   }
 
   img {
@@ -73,7 +74,7 @@ input:-internal-autofill-selected {
     }
 
     h2 {
-      font-size: rfs-value(22px);
+      font-size: rfs-value(26px);
       line-height: 1.3
     }
   }
@@ -130,7 +131,7 @@ input:-internal-autofill-selected {
   }
 
   .section-tittle.tittle-form h2 {
-    font-size: rfs-value(24px);
+    font-size: rfs-value(30px);
   }
 
   .corner-ornament {
@@ -158,7 +159,7 @@ input:-internal-autofill-selected {
 @include media-breakpoint-up(xl) {
   .section-tittle {
     h2 {
-      font-size: rfs-value(40px);
+      font-size: rfs-value(38px);
     }
   }
 
