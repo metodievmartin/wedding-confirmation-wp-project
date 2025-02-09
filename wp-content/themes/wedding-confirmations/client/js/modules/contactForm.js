@@ -21,7 +21,7 @@ export function init(contactFormSelector = '#contact-form') {
     $recaptchaToken = $formContainer.find('input[name="recaptcha_token"]');
 
     $submissionAlert.addClass('d-none');
-    $submissionAlert.removeClass('alert-error alert-success');
+    $submissionAlert.removeClass('alert-danger alert-success');
 
     if (!this.checkValidity()) {
       $contactForm.addClass('was-validated');
