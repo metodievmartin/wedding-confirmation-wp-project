@@ -26,9 +26,9 @@ $has_end_date_passed = wccf()->has_end_date_passed();
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="row g-3">
                                 <div class="col-lg-12">
-                                    <div class="form-floating form-row-container">
+                                    <div class="form-floating">
                                         <input type="text" class="form-control" id="guest_first_name"
                                                name="guest_first_name"
                                                placeholder="<?php esc_attr_e( 'First Name', 'wedding_confirmation' ); ?>"
@@ -42,7 +42,7 @@ $has_end_date_passed = wccf()->has_end_date_passed();
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
-                                    <div class="form-floating form-row-container">
+                                    <div class="form-floating">
                                         <input type="text" class="form-control" id="guest_last_name"
                                                name="guest_last_name"
                                                placeholder="<?php esc_attr_e( 'Last Name', 'wedding_confirmation' ); ?>"
@@ -56,7 +56,7 @@ $has_end_date_passed = wccf()->has_end_date_passed();
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
-                                    <div class="form-floating form-row-container">
+                                    <div class="form-floating">
                                         <input type="email" class="form-control" id="guest_email" name="guest_email"
                                                placeholder="<?php esc_attr_e( 'Your Email', 'wedding_confirmation' ); ?>"
                                                required>
@@ -68,7 +68,7 @@ $has_end_date_passed = wccf()->has_end_date_passed();
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-12 form-row-container">
+                                <div class="col-5">
                                     <select id="num_guests" name="num_guests"
                                             class="form-select nice-select form-select-lg"
                                             aria-label="Large select example">
@@ -78,7 +78,7 @@ $has_end_date_passed = wccf()->has_end_date_passed();
                                         <option value="4">4 Guests</option>
                                     </select>
                                 </div>
-                                <div class="col-lg-12 form-row-container">
+                                <div class="col-7">
                                     <select id="rsvp_confirmation" name="rsvp_confirmation"
                                             class="form-select nice-select form-select-lg"
                                             aria-label="Large select example">
