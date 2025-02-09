@@ -10,12 +10,14 @@ class Contact_Form_Main {
 	// ========== Properties ==========
 
 	private $db_service;
+	private $settings_service;
 	private $rest_api;
 
 	// ========== Constructor ==========
 
-	public function __construct( $db_service ) {
-		$this->db_service = $db_service;
+	public function __construct( $db_service, $settings_service ) {
+		$this->db_service       = $db_service;
+		$this->settings_service = $settings_service;
 		$this->_initialise();
 	}
 
@@ -24,6 +26,6 @@ class Contact_Form_Main {
 	private function _initialise() {
 		// Init Custom Rest Endpoints
 		wccf_include( 'includes/contact-form/class-contact-form-rest.php' );
-		$this->rest_api = new Contact_Form_Rest( self::NAMESPACE, $this->db_service );
+		$this->rest_api = new Contact_Form_Rest( self::NAMESPACE, $this->db_service, $this->settings_service );
 	}
 }

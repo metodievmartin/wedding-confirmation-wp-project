@@ -63,7 +63,7 @@ class Wedding_Confirmation_Custom_Functionality {
 		$this->services['confirmations'] = new Confirmations_DB_Service( $this->custom_DBs->get_confirmations_db_instance() );
 		$this->services['settings']      = new WCCF_Settings_Service();
 
-		$this->instances['contact_form'] = new Contact_Form_Main( $this->services['confirmations'] );
+		$this->instances['contact_form'] = new Contact_Form_Main( $this->services['confirmations'], $this->services['settings'] );
 		$this->instances['admin']        = new WCCF_Admin_Main( $this->services['confirmations'], $this->services['settings'] );
 		$this->instances['info-card']    = new WCCF_Info_Card_Main();
 	}

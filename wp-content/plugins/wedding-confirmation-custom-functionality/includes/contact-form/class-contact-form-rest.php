@@ -14,13 +14,15 @@ class Contact_Form_Rest {
 	// ========== Properties ==========
 
 	private $namespace;
-	private $service;
+	private Confirmations_DB_Service $db_service;
+	private WCCF_Settings_Service $settings_service;
 
 	// ========== Constructor ==========
 
-	public function __construct( $namespace, $service ) {
-		$this->namespace = $namespace;
-		$this->service   = $service;
+	public function __construct( $namespace, Confirmations_DB_Service $db_service, WCCF_Settings_Service $settings_service ) {
+		$this->namespace        = $namespace;
+		$this->db_service       = $db_service;
+		$this->settings_service = $settings_service;
 
 		// Init functionality
 		$this->_initialise();
@@ -57,6 +59,14 @@ class Contact_Form_Rest {
 	}
 
 	function handle_contact_form_submission( $request ) {
+		if ( $this->settings_service->has_confirmations_end_date_passed() ) {
+			return rest_ensure_response( new WP_Error(
+				'confirmation-closed',
+				__( 'Confirmation period has ended. New confirmations are not accepted.', 'wccf-domain' ),
+				array( 'status' => 403 )
+			) );
+		}
+
 		$params = $request->get_params();
 
 		// Extract parameters
@@ -108,7 +118,7 @@ class Contact_Form_Rest {
 		);
 
 		try {
-			$this->service->save_confirmation_in_db( $confirmation_details );
+			$this->db_service->save_confirmation_in_db( $confirmation_details );
 		} catch ( Exception $e ) {
 			return rest_ensure_response( new WP_Error(
 				'internal_error',
