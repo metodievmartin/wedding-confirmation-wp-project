@@ -38,9 +38,25 @@
                 <div class="footer-item">
                     <h3 class="footer-section-heading">Контакти</h3>
                     <div class="d-flex flex-column align-items-start">
-                        <p><i class="fa fa-map-marker-alt me-2"></i> Test</p>
-                        <p><i class="fa fa-phone-alt me-2"></i> Test</p>
-                        <p><i class="fas fa-envelope me-2"></i> Test</p>
+
+						<?php if ( ! empty( bci_get_contact_address() ) ) : ?>
+                            <p>
+                                <i class="fa fa-map-marker-alt me-2"></i> <?php echo esc_html( bci_get_contact_address() ); ?>
+                            </p>
+						<?php endif; ?>
+
+						<?php if ( ! empty( bci_get_contact_phone_number() ) ) : ?>
+                            <p>
+                                <i class="fa fa-phone-alt me-2"></i> <?php echo esc_html( bci_get_contact_phone_number() ); ?>
+                            </p>
+						<?php endif; ?>
+
+						<?php if ( ! empty( bci_get_contact_email() ) ) : ?>
+                            <p>
+                                <i class="fas fa-envelope me-2"></i> <?php echo esc_html( bci_get_contact_email() ); ?>
+                            </p>
+						<?php endif; ?>
+
                     </div>
                 </div>
             </div>
