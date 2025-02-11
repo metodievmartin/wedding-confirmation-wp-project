@@ -1,0 +1,114 @@
+.my-contact-info-settings *, *::before, *::after {
+    box-sizing: border-box;
+}
+
+.my-contact-info-settings {
+    --bs-border-width: 1px;
+    --bs-body-color: #333333;
+    --bs-border-color: #cfcfcf;
+    --bs-body-color-rgb: #6C757D;
+}
+
+.my-contact-info-form {
+    max-width: 30rem;
+    width: 100%;
+    margin-top: 2rem;
+}
+
+.my-contact-info-settings .description {
+    font-size: .75rem;
+    /*position: absolute;*/
+    padding-left: .5rem;
+}
+
+.my-contact-info-settings .form-floating {
+    position: relative;
+}
+
+.my-contact-info-settings .form-group {
+    margin-bottom: 2rem;
+}
+
+.my-contact-info-settings .form-group:last-of-type {
+    margin-bottom: 3rem;
+}
+
+.my-contact-info-settings .form-control {
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--bs-body-color);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: white;
+    background-clip: padding-box;
+    border: var(--bs-border-width) solid var(--bs-border-color);
+    border-radius: var(--bs-border-radius);
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.my-contact-info-settings .form-floating > .form-control,
+.my-contact-info-settings .form-floating > .form-control-plaintext {
+    padding: 1rem .75rem;
+}
+
+.my-contact-info-settings .form-floating > .form-control,
+.my-contact-info-settings .form-floating > .form-control-plaintext,
+.my-contact-info-settings .form-floating > .form-select {
+    height: calc(3.5rem + calc(var(--bs-border-width) * 2));
+    min-height: calc(3.5rem + calc(var(--bs-border-width) * 2));
+    line-height: 1.25;
+}
+
+.my-contact-info-settings .form-floating > label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    z-index: 2;
+    height: 100%;
+    padding: 1rem .75rem;
+    overflow: hidden;
+    text-align: start;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    pointer-events: none;
+    border: var(--bs-border-width) solid transparent;
+    transform-origin: 0 0;
+    transition: opacity .1s ease-in-out, transform .1s ease-in-out;
+}
+
+.my-contact-info-settings label {
+    display: inline-block;
+}
+
+.my-contact-info-settings .form-floating > .form-control::-moz-placeholder,
+.form-floating > .form-control-plaintext::-moz-placeholder {
+    color: transparent;
+}
+
+.my-contact-info-settings .form-floating > .form-control::placeholder,
+.my-contact-info-settings .form-floating > .form-control-plaintext::placeholder {
+    color: transparent;
+}
+
+.my-contact-info-settings .form-floating > .form-control-plaintext ~ label,
+.my-contact-info-settings .form-floating > .form-control:focus ~ label,
+.my-contact-info-settings .form-floating > .form-control:not(:placeholder-shown) ~ label,
+.my-contact-info-settings .form-floating > .form-select ~ label {
+    color: var(--bs-body-color-rgb);
+    transform: scale(.8) translateY(-.5rem) translateX(.15rem);
+}
+
+.my-contact-info-settings .form-floating > .form-control-plaintext:focus,
+.my-contact-info-settings .form-floating > .form-control-plaintext:not(:placeholder-shown),
+.my-contact-info-settings .form-floating > .form-control:focus,
+.form-floating > .form-control:not(:placeholder-shown) {
+    padding-top: 1.625rem;
+    padding-bottom: .625rem;
+}
