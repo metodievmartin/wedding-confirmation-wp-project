@@ -21,7 +21,7 @@ $has_end_date_passed = wccf()->has_end_date_passed();
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="section-tittle tittle-form text-center mb-3">
-                                        <h2>Are you attending?</h2>
+                                        <h2>Ще присъствате ли?</h2>
 										<?php get_template_part( 'template-parts/components/ornament-line-small' ); ?>
                                     </div>
                                 </div>
@@ -31,13 +31,13 @@ $has_end_date_passed = wccf()->has_end_date_passed();
                                     <div class="form-floating">
                                         <input type="text" class="form-control" id="guest_first_name"
                                                name="guest_first_name"
-                                               placeholder="<?php esc_attr_e( 'First Name', 'wedding_confirmation' ); ?>"
+                                               placeholder="*Име"
                                                required>
                                         <label for="guest_first_name">
-                                            *<?php esc_html_e( 'First Name', 'wedding_confirmation' ); ?>
+                                            *Име
                                         </label>
                                         <div class="invalid-feedback">
-											<?php esc_html_e( 'First name is a required field', 'wedding_confirmation' ); ?>
+                                            Това поле е задължително
                                         </div>
                                     </div>
                                 </div>
@@ -45,26 +45,26 @@ $has_end_date_passed = wccf()->has_end_date_passed();
                                     <div class="form-floating">
                                         <input type="text" class="form-control" id="guest_last_name"
                                                name="guest_last_name"
-                                               placeholder="<?php esc_attr_e( 'Last Name', 'wedding_confirmation' ); ?>"
+                                               placeholder="*Фамилия"
                                                required>
                                         <label for="guest_last_name">
-                                            *<?php esc_html_e( 'Last Name', 'wedding_confirmation' ); ?>
+                                            *Фамилия
                                         </label>
                                         <div class="invalid-feedback">
-											<?php esc_html_e( 'Last name is a required field', 'wedding_confirmation' ); ?>
+                                            Това поле е задължително
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="form-floating">
                                         <input type="email" class="form-control" id="guest_email" name="guest_email"
-                                               placeholder="<?php esc_attr_e( 'Your Email', 'wedding_confirmation' ); ?>"
+                                               placeholder="*Имейл"
                                                required>
                                         <label for="guest_email">
-                                            *<?php esc_html_e( 'Your Email', 'wedding_confirmation' ); ?>
+                                            *Имейл
                                         </label>
                                         <div class="invalid-feedback">
-											<?php esc_html_e( 'This field should be a valid email', 'wedding_confirmation' ); ?>
+                                            Това поле е задължително
                                         </div>
                                     </div>
                                 </div>
@@ -72,36 +72,42 @@ $has_end_date_passed = wccf()->has_end_date_passed();
                                     <select id="num_guests" name="num_guests"
                                             class="form-select nice-select form-select-lg"
                                             aria-label="Large select example">
-                                        <option selected value="1">1 Guest</option>
-                                        <option value="2">2 Guests</option>
-                                        <option value="3">3 Guests</option>
-                                        <option value="4">4 Guests</option>
+                                        <option selected value="1">1 Гост</option>
+                                        <option value="2">2 Госта</option>
+                                        <option value="3">3 Госта</option>
+                                        <option value="4">4 Госта</option>
+                                        <option value="5">5 Госта</option>
+                                        <option value="6">6 Госта</option>
+                                        <option value="7">7 Госта</option>
+                                        <option value="8">8 Госта</option>
                                     </select>
                                 </div>
                                 <div class="col-7">
                                     <select id="rsvp_confirmation" name="rsvp_confirmation"
                                             class="form-select nice-select form-select-lg"
                                             aria-label="Large select example">
-                                        <option selected value="true">Confirm</option>
-                                        <option value="false">Decline</option>
+                                        <option selected value="true">Потвърждавам</option>
+                                        <option value="false">Отказвам</option>
                                     </select>
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="form-floating form-box message-icon mb-3">
                                         <textarea class="form-control additional-info"
                                                   id="additional_info" name="additional_info"
-                                                  placeholder="<?php esc_attr_e( 'Add additional info here', 'wedding_confirmation' ); ?>"
+                                                  placeholder="Допълнителна информация"
                                         ></textarea>
                                         <label for="additional_info">
-											<?php esc_html_e( 'Additional info', 'wedding_confirmation' ); ?>
+                                            Допълнителна информация
                                         </label>
                                     </div>
 
 									<?php if ( wccf_is_recaptcha_enabled() ): ?>
-                                        <div>
-                                            This site is protected by reCAPTCHA and the Google
-                                            <a href="https://policies.google.com/privacy">Privacy Policy</a> and
-                                            <a href="https://policies.google.com/terms">Terms of Service</a> apply.
+                                        <div class="recaptcha-terms-container">
+                                            Този сайт е защитен с reCAPTCHA и се прилагат
+                                            <a href="https://policies.google.com/privacy">Политиката за
+                                                поверителност</a>
+                                            и <a href="https://policies.google.com/terms">Условията за ползване</a> на
+                                            Google.
                                         </div>
 									<?php endif; ?>
 
@@ -117,7 +123,7 @@ $has_end_date_passed = wccf()->has_end_date_passed();
                                     </div>
 
                                     <div class="submit-info text-center mt-4">
-                                        <button class="btn btn-wedc-primary btn-lg px-5" type="submit">Submit</button>
+                                        <button class="btn btn-wedc-primary btn-lg px-5" type="submit">Изпрати</button>
                                     </div>
                                 </div>
                             </div>
@@ -128,12 +134,13 @@ $has_end_date_passed = wccf()->has_end_date_passed();
 
                         <div class="card text-center">
                             <div class="card-body">
-                                <h3 class="card-title">Confirmation is closed</h3>
+                                <h3 class="card-title">Приемането на потвърждения приключи.</h3>
 
 								<?php get_template_part( 'template-parts/components/ornament-line-small' ); ?>
 
-                                <p class="card-text mt-3">We are no longer taking new confirmations. Thank you if you've
-                                    already responded!</p>
+                                <p class="card-text mt-3">
+                                    Вече не приемаме нови потвърждения. Благодарим Ви, ако вече сте отговорили!
+                                </p>
                             </div>
                         </div>
 

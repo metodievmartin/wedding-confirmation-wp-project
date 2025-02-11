@@ -8,7 +8,7 @@ $info_cards_query = wccf()->get_info_cards();
 
 		<?php
 		$section_title_args = array(
-			'section_title' => __( 'Wedding Info', 'wedding-confirmations' ),
+			'section_title' => 'Детайли за сватбата',
 		);
 
 		get_template_part( 'template-parts/components/section-title', null, $section_title_args );
