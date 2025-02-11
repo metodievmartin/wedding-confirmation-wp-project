@@ -70,6 +70,12 @@
       border: 1px solid #d9d9d9;
     }
 
+    .was-validated {
+      .nice-select:valid {
+        border-color: var(--bs-form-valid-border-color);
+      }
+    }
+
     .nice-select {
       width: 100%;
       color: $text-muted;
@@ -85,6 +91,15 @@
       width: 100%;
       border-radius: 5px;
       border: 1px solid #d9d9d9;
+    }
+
+    .recaptcha-terms-container {
+      font-size: rfs-value(12px);
+      color: $text-muted;
+
+      a {
+        color: $text-muted;
+      }
     }
   }
 
