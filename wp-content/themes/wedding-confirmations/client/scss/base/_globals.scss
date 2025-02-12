@@ -157,6 +157,10 @@ input:-internal-autofill-selected {
   }
 }
 
+.grecaptcha-badge {
+  visibility: hidden;
+}
+
 @include media-breakpoint-up(xl) {
   .section-tittle {
     h2 {
