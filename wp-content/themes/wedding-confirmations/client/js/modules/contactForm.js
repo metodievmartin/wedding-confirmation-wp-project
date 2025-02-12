@@ -36,7 +36,6 @@ export function init(contactFormSelector = '#contact-form') {
           .execute(recaptchaOptions.siteKey, { action: $recaptchaAction.val() })
           .then(function (token) {
             $recaptchaToken.val(token);
-            console.log('recaptcha token: ', token);
             makeRequest();
           });
       });
@@ -79,7 +78,6 @@ export function init(contactFormSelector = '#contact-form') {
         $contactForm.removeClass('was-validated');
         $contactForm[0].reset();
         $submissionAlert.addClass('alert-success');
-        console.log(result);
       } else {
         $submissionAlert.addClass('alert-danger');
       }
