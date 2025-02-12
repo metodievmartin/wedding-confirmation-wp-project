@@ -3,7 +3,7 @@
   border-bottom: 1px solid rgba(0, 0, 0, .05);
 
   .main-logo {
-    height: rfs-value(70px);
+    height: rfs-value(55px);
   }
 }
 
@@ -13,6 +13,7 @@
 
   .nav-link {
     text-transform: uppercase;
+    text-align: center;
   }
 }
 
@@ -61,7 +62,7 @@ body[data-os='Windows'] .search-shortcut.windows {
 @include media-breakpoint-up(lg) {
   .header {
     .main-logo {
-      height: rfs-value(90px);
+      height: rfs-value(75px);
     }
 
     .nav-link {
