@@ -22,7 +22,7 @@
     <div class="container-lg">
         <nav class="navbar navbar-light navbar-expand-lg">
             <a href="<?php echo esc_url( site_url( '/' ) ); ?>" class="navbar-brand">
-				<?php get_template_part( 'template-parts/header/logo' ); ?>
+				<?php get_template_part( 'template-parts/components/logo' ); ?>
             </a>
 
             <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse"

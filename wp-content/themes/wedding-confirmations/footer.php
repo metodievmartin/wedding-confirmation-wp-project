@@ -3,12 +3,13 @@
         <div class="row justify-content-between pt-5 pb-5">
             <div class="footer-column col-lg-3 col-md-6">
                 <div class="footer-item">
-                    <h2 class="mb-4">
-						<?php get_template_part( 'template-parts/header/logo' ); ?>
-                    </h2>
-                    <p class="lh-lg mb-4">
+                    <div class="logo-container d-flex align-items-center justify-content-center flex-column">
+						<?php get_template_part( 'template-parts/components/logo' ); ?>
 
-                    </p>
+                        <p class="lh-lg mb-4 mt-2">
+                            We did it. Will you?
+                        </p>
+                    </div>
 
 					<?php if ( is_active_sidebar( 'footer-social-icons' ) ) : ?>
                         <div class="footer-logo-widget-area">
