@@ -76,7 +76,7 @@ class BrandIt_Contact_Info {
 			self::MAIN_MENU_PAGE_SLUG,
 			array( $this, 'contact_info_admin_page_html' ),
 			'dashicons-email',
-			100
+			26
 		);
 
 		// loads additional styles
