@@ -5,20 +5,11 @@
 
   .story-img {
     img {
+      border-radius: 0;
       width: 100%;
     }
 
     .story2 {
-      //position: relative;
-      //bottom: 0;
-      //left: 0;
-      //max-height: $max-card-width;
-
-      //@include media-breakpoint-up(sm) {
-      //  bottom: -51px;
-      //  left: -27px;
-      //}
-
       @include media-breakpoint-up(md) {
         margin-top: rfs-value(65px);
       }
