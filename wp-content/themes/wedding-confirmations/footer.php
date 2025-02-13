@@ -18,7 +18,7 @@
 					<?php endif; ?>
                 </div>
             </div>
-            <div class="footer-column col-xl-3 col-lg-3 col-md-6 mb-30">
+            <div class="footer-column col-xl-3 col-lg-3 col-md-6 mb-3">
                 <h3 class="footer-section-heading">Меню</h3>
 
 				<?php
@@ -35,7 +35,7 @@
 				?>
 
             </div>
-            <div class="footer-column col-lg-3 col-md-6">
+            <div class="footer-column col-lg-3 col-md-6 mb-3">
                 <div class="footer-item">
                     <h3 class="footer-section-heading">Контакти</h3>
                     <div class="d-flex flex-column align-items-start">
