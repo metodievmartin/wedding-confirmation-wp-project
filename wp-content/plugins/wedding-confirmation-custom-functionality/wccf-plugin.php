@@ -82,6 +82,8 @@ class Wedding_Confirmation_Custom_Functionality {
 	 * or routes that may have been registered during activation.
 	 */
 	public function wccf_plugin_activated() {
+		$this->custom_DBs->on_activation_hook();
+
 		foreach ( $this->instances as $instance ) {
 			if ( method_exists( $instance, 'on_activation_hook' ) ) {
 				$instance->on_activation_hook();
