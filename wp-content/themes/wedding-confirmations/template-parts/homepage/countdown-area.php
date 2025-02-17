@@ -40,19 +40,19 @@ $has_end_date_passed    = wccf()->has_end_date_passed();
                     <div class="digits-container d-flex justify-content-between flex-wrap">
                         <div class="single-counter text-center">
                             <span id="cd-days" class="counter">23</span>
-                            <p>days</p>
+                            <p>дни</p>
                         </div>
                         <div class="single-counter text-center">
                             <span id="cd-hours" class="counter">15</span>
-                            <p>hours</p>
+                            <p>часа</p>
                         </div>
                         <div class="single-counter text-center">
                             <span id="cd-minutes" class="counter">46</span>
-                            <p>mins</p>
+                            <p>мин</p>
                         </div>
                         <div class="single-counter text-center">
                             <span id="cd-seconds" class="counter">20</span>
-                            <p>secs</p>
+                            <p>сек</p>
                         </div>
                     </div>
 
