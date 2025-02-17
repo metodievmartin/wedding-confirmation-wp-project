@@ -157,3 +157,13 @@ input.datepicker {
     display: inline-block;
     margin-right: 10px;
 }
+
+/*
+    Overriding the icon/image picker preview window because black SVG icons are not visible
+*/
+.acf-field-icon-picker .acf-icon-picker-media-library .acf-icon-picker-media-library-preview-dashicon,
+.acf-field-icon-picker .acf-icon-picker-media-library .acf-icon-picker-media-library-preview-img,
+.acf-field-icon-picker .acf-icon-picker-url-tabs .acf-icon-picker-media-library-preview-dashicon,
+.acf-field-icon-picker .acf-icon-picker-url-tabs .acf-icon-picker-media-library-preview-img {
+    background-color: #dcdcdc;
+}
