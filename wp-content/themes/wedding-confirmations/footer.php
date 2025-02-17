@@ -18,8 +18,8 @@
 					<?php endif; ?>
                 </div>
             </div>
-            <div class="footer-column col-xl-3 col-lg-3 col-md-6 mb-3">
-                <h3 class="footer-section-heading">Меню</h3>
+            <div class="footer-column col-xl-3 col-lg-3 col-md-6 mb-30">
+                <h3 class="footer-section-heading"><?php esc_html_e( 'Page Links', 'wedding_confirmation' ); ?></h3>
 
 				<?php
 
@@ -37,7 +37,7 @@
             </div>
             <div class="footer-column col-lg-3 col-md-6 mb-3">
                 <div class="footer-item">
-                    <h3 class="footer-section-heading">Контакти</h3>
+                    <h3 class="footer-section-heading"><?php esc_html_e( 'Contact Us', 'wedding_confirmation' ); ?></h3>
                     <div class="d-flex flex-column align-items-start">
 
 						<?php if ( ! empty( bci_get_contact_address() ) ) : ?>
@@ -66,9 +66,8 @@
 
     <div class="copyright-area">
         <div class="container-xxl text-center">
-            <p class="copyright-text">
-                Copyright &copy; <?php echo date( "Y" ); ?> Wedding Confirmations. All Rights Reserved
-            </p>
+            <p class="copyright-text">Copyright &copy; <?php echo date( "Y" ); ?> Wedding Confirmations. All Rights
+                Reserved</p>
         </div>
     </div>
 

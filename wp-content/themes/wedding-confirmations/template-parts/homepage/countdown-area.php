@@ -8,18 +8,17 @@ $has_end_date_passed    = wccf()->has_end_date_passed();
     <div class="container-lg">
 
 		<?php
-		$countdown_section_title = $has_end_date_passed
-			? 'Затворено за потвърждения'
-			: 'Потвърждение до:';
+		$countdown_section_title = $has_end_date_passed ? __( 'Confirmation Closed:', 'wedding-confirmations' ) : __( 'Confirmation Closes In:', 'wedding-confirmations' );
 
 		if ( ! empty( $confirmations_end_date ) && ! $has_end_date_passed ) {
 			$countdown_section_subtitle = sprintf(
-				"Молим Ви учтиво да потвърдите своето присъствие до %s часа на %s",
+			/* translators: 1: confirmation deadline time, 2: confirmation deadline date */
+				__( "We kindly ask you to confirm or decline your attendance until %s o'clock on %s", 'wedding-confirmations' ),
 				$confirmations_end_date->format( 'H:i' ),
-				$confirmations_end_date->format( 'd.m.Y' ),
+				$confirmations_end_date->format( 'd/m/Y' ),
 			);
 		} else {
-			$countdown_section_subtitle = 'Приемането на нови потвърждения приключи. Благодарим Ви за разбирането!';
+			$countdown_section_subtitle = __( 'We are no longer accepting new confirmations. Thank you!', 'wedding-confirmations' );
 		}
 
 		$section_title_args = array(

@@ -15,7 +15,7 @@ $our_story_card_image       = $our_story_section_fields['our_story_card_image'] 
 
 			<?php
 			$section_title_args = array(
-				'section_title'    => 'Нашата история',
+				'section_title'    => __( 'Our Love Story', 'wedding-confirmations' ),
 				'section_subtitle' => $our_story_section_subtitle
 			);
 
