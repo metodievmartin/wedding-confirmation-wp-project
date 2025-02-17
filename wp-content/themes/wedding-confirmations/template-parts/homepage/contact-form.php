@@ -113,10 +113,10 @@ $has_end_date_passed = wccf()->has_end_date_passed();
 
                                     <div class="form-submission-alert alert d-none alert-dismissible my-4">
                                         <div class="alert-message type-success">
-											<?php esc_html_e( 'Submitted successfully!', 'wedding_confirmation' ); ?>
+                                            Изпратено успешно
                                         </div>
                                         <div class="alert-message type-error">
-											<?php esc_html_e( 'Sorry, there has been an error.', 'wedding_confirmation' ); ?>
+                                            Възникна грешка при изпращането
                                         </div>
                                         <button type="button" class="btn-close" aria-label="Close"></button>
                                     </div>
