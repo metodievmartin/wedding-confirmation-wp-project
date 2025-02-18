@@ -26,7 +26,7 @@ class WCCF_Settings_Page {
 		$defaults = [
 			'page_title' => __( 'Wedding Confirmations Settings', 'wccf_domain' ),
 			'menu_title' => __( 'Settings', 'wccf_domain' ),
-			'capability' => 'manage_options',
+			'capability' => 'edit_pages',
 			'icon_url'   => '',
 			'position'   => 25,
 		];
@@ -49,7 +49,7 @@ class WCCF_Settings_Page {
 		$defaults = [
 			'page_title' => __( 'Wedding Confirmations Settings', 'wccf_domain' ),
 			'menu_title' => __( 'Settings', 'wccf_domain' ),
-			'capability' => 'manage_options',
+			'capability' => 'edit_pages',
 		];
 
 		// Merge the provided arguments with defaults
@@ -75,7 +75,7 @@ class WCCF_Settings_Page {
 	}
 
 	public function handle_save_settings() {
-		if ( ! current_user_can( 'manage_options' ) ) {
+		if ( ! current_user_can( 'edit_pages' ) ) {
 			wp_die( esc_html__( 'Unauthorised user', 'wccf_domain' ) );
 		}
 
