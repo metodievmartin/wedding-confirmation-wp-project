@@ -24,7 +24,7 @@ class WCCF_Confirmations_Page {
 		$defaults = [
 			'page_title' => __( 'Wedding Confirmations', 'wccf_domain' ),
 			'menu_title' => __( 'Confirmations', 'wccf_domain' ),
-			'capability' => 'manage_options',
+			'capability' => 'edit_pages',
 			'icon_url'   => '',
 			'position'   => 25,
 		];
@@ -47,7 +47,7 @@ class WCCF_Confirmations_Page {
 		$defaults = [
 			'page_title' => __( 'Wedding Confirmations', 'wccf_domain' ),
 			'menu_title' => __( 'All Confirmations', 'wccf_domain' ),
-			'capability' => 'manage_options',
+			'capability' => 'edit_pages',
 		];
 
 		// Merge the provided arguments with defaults

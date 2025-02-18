@@ -72,7 +72,7 @@ class BrandIt_Contact_Info {
 		$main_menu_page_hook = add_menu_page(
 			esc_html__( 'Contact Info', 'wccf-domain' ),
 			esc_html__( 'Contact Info', 'wccf-domain' ),
-			'manage_options',
+			'edit_pages',
 			self::MAIN_MENU_PAGE_SLUG,
 			array( $this, 'contact_info_admin_page_html' ),
 			'dashicons-email',
@@ -105,7 +105,7 @@ class BrandIt_Contact_Info {
 		if (
 			! isset( $_POST[ self::NONCE_SAVE_CONTACT_INFO ] )
 			|| ! wp_verify_nonce( $_POST[ self::NONCE_SAVE_CONTACT_INFO ], self::NONCE_SAVE_CONTACT_INFO_ACTION )
-			|| ! current_user_can( 'manage_options' )
+			|| ! current_user_can( 'edit_pages' )
 		) {
 			$this->render_error_message( __( 'Sorry, you are not allowed to manage contact forms.', 'wccf-domain' ) );
 
@@ -133,7 +133,7 @@ class BrandIt_Contact_Info {
 		?>
 
         <div class="wrap my-contact-info-settings">
-            <h1><?php echo esc_html__( 'Your Business Contact Information', 'wccf-domain' ); ?></h1>
+            <h1><?php echo esc_html__( 'Your Contact Information', 'wccf-domain' ); ?></h1>
 
 			<?php
 
