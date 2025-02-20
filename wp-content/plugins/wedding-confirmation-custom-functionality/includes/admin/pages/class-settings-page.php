@@ -24,8 +24,8 @@ class WCCF_Settings_Page {
 
 	public function add_page_as_menu_page( array $args = [] ): string {
 		$defaults = [
-			'page_title' => __( 'Wedding Confirmations Settings', 'wccf_domain' ),
-			'menu_title' => __( 'Settings', 'wccf_domain' ),
+			'page_title' => __( 'Wedding Confirmations Settings', 'wccf-domain' ),
+			'menu_title' => __( 'Settings', 'wccf-domain' ),
 			'capability' => 'edit_pages',
 			'icon_url'   => '',
 			'position'   => 25,
@@ -47,8 +47,8 @@ class WCCF_Settings_Page {
 	public function add_page_as_submenu_page( string $parent_slug, array $args = [] ): string|false {
 		// Define the default arguments
 		$defaults = [
-			'page_title' => __( 'Wedding Confirmations Settings', 'wccf_domain' ),
-			'menu_title' => __( 'Settings', 'wccf_domain' ),
+			'page_title' => __( 'Wedding Confirmations Settings', 'wccf-domain' ),
+			'menu_title' => __( 'Settings', 'wccf-domain' ),
 			'capability' => 'edit_pages',
 		];
 
@@ -76,14 +76,14 @@ class WCCF_Settings_Page {
 
 	public function handle_save_settings() {
 		if ( ! current_user_can( 'edit_pages' ) ) {
-			wp_die( esc_html__( 'Unauthorised user', 'wccf_domain' ) );
+			wp_die( esc_html__( 'Unauthorised user', 'wccf-domain' ) );
 		}
 
 		// Check for nonce validity; this returns a value, which can be checked.
 		$nonce_check = check_admin_referer( self::SAVE_SETTINGS_ACTION, 'wccf_settings_nonce' );
 
 		if ( ! $nonce_check ) {
-			wp_die( esc_html__( 'Invalid request.', 'wccf_domain' ) );
+			wp_die( esc_html__( 'Invalid request.', 'wccf-domain' ) );
 		}
 
 		$end_date_option_id = $this->settings_service::CONFIRMATIONS_END_DATE;
@@ -210,8 +210,6 @@ class WCCF_Settings_Page {
 	}
 
 	public function get_formatted_date( $date, $format = 'Y-m-d\TH:i' ) {
-//		$date = $this->settings_service->get_confirmations_end_date();
-
 		if ( ! $date ) {
 			return '';
 		}
@@ -221,8 +219,6 @@ class WCCF_Settings_Page {
 
 
 	public function get_end_date_info_message( $date ) {
-//		$date = $this->settings_service->get_confirmations_end_date();
-
 		if ( ! $date ) {
 			return 'Please, set a closing date and time.';
 		}

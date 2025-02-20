@@ -22,8 +22,8 @@ class WCCF_Confirmations_Page {
 
 	public function add_page_as_menu_page( array $args = [] ): string {
 		$defaults = [
-			'page_title' => __( 'Wedding Confirmations', 'wccf_domain' ),
-			'menu_title' => __( 'Confirmations', 'wccf_domain' ),
+			'page_title' => __( 'Wedding Confirmations', 'wccf-domain' ),
+			'menu_title' => __( 'Confirmations', 'wccf-domain' ),
 			'capability' => 'edit_pages',
 			'icon_url'   => '',
 			'position'   => 25,
@@ -45,8 +45,8 @@ class WCCF_Confirmations_Page {
 	public function add_page_as_submenu_page( string $parent_slug, array $args = [] ): string|false {
 		// Define the default arguments
 		$defaults = [
-			'page_title' => __( 'Wedding Confirmations', 'wccf_domain' ),
-			'menu_title' => __( 'All Confirmations', 'wccf_domain' ),
+			'page_title' => __( 'Wedding Confirmations', 'wccf-domain' ),
+			'menu_title' => __( 'All Confirmations', 'wccf-domain' ),
 			'capability' => 'edit_pages',
 		];
 
@@ -77,12 +77,12 @@ class WCCF_Confirmations_Page {
 		// Write the CSV file
 		$output = fopen( $filepath, 'w' );
 		fputcsv( $output, [
-			'First Name',
-			'Last Name',
-			'Email',
-			'Guests',
-			'Attendance Status',
-			'Additional Info'
+			__( 'First Name', 'wccf-domain' ),
+			__( 'Last Name', 'wccf-domain' ),
+			__( 'Email', 'wccf-domain' ),
+			__( 'Guests', 'wccf-domain' ),
+			__( 'Attendance Status', 'wccf-domain' ),
+			__( 'Additional Info', 'wccf-domain' )
 		], ',', '"', '\\' );
 
 		if ( ! empty( $results ) ) {
@@ -130,7 +130,7 @@ class WCCF_Confirmations_Page {
 		$total_rows = $this->confirmations_service->get_total_confirmations_count( $search_term );
 
 		echo '<div class="wrap">';
-		echo '<h1>' . __( 'Wedding Confirmations', 'wccf_domain' ) . '</h1>';
+		echo '<h1>' . __( 'Wedding Confirmations', 'wccf-domain' ) . '</h1>';
 
 		echo '</br>';
 
@@ -157,14 +157,14 @@ class WCCF_Confirmations_Page {
 	public function render_search_form( string $search_term ): void {
 		echo '<form method="get" class="confirmations-search-form">';
 		echo '<input type="hidden" name="page" value="' . $this->get_page_slug() . '" />';
-		echo '<input type="text" name="search" value="' . esc_attr( $search_term ) . '" placeholder="' . __( 'First Name, Last Name or Email...', 'wccf_domain' ) . '" class="search-input" />';
-		echo '<input type="submit" value="' . __( 'Search', 'wccf_domain' ) . '" class="button button-primary submit-button" />';
+		echo '<input type="text" name="search" value="' . esc_attr( $search_term ) . '" placeholder="' . __( 'First Name, Last Name or Email...', 'wccf-domain' ) . '" class="search-input" />';
+		echo '<input type="submit" value="' . __( 'Search', 'wccf-domain' ) . '" class="button button-primary submit-button" />';
 		echo '</form>';
 
 		if ( ! empty( $search_term ) ) {
 			echo '<form method="get">';
 			echo '<input type="hidden" name="page" value="' . $this->get_page_slug() . '" />';
-			echo '<input type="submit" value="' . __( 'Clear Search', 'wccf_domain' ) . '" class="button" />';
+			echo '<input type="submit" value="' . __( 'Clear Search', 'wccf-domain' ) . '" class="button" />';
 			echo '</form>';
 		}
 	}
@@ -192,7 +192,7 @@ class WCCF_Confirmations_Page {
 				echo '<input type="hidden" name="search" value="' . esc_attr( $search_term ) . '" />';
 			}
 
-			echo '<input type="submit" value="' . __( 'Reset All Filters', 'wccf_domain' ) . '" class="button" />';
+			echo '<input type="submit" value="' . __( 'Reset All Filters', 'wccf-domain' ) . '" class="button" />';
 
 			echo '<span>';
 			echo '<span class="badge text-bg-secondary"> ' . esc_html( $order_by_label ) . ' </span>';
@@ -258,29 +258,31 @@ class WCCF_Confirmations_Page {
 		echo '<table class="wp-list-table widefat fixed striped">';
 		echo '<thead>
 		        <tr>
-		            <th style="width: 13%;">' . $this->render_table_anchor_tag( __( 'Last Name', 'wccf_domain' ), 'last_name', $order, $current_order_by ) . '</th>
-		            <th style="width: 13%;">' . $this->render_table_anchor_tag( __( 'First Name', 'wccf_domain' ), 'first_name', $order, $current_order_by ) . '</th>
-		            <th style="width: 20%;">' . __( 'Email', 'wccf_domain' ) . '</th>
-		            <th style="width: 6%;">' . $this->render_table_anchor_tag( __( 'Guests', 'wccf_domain' ), 'num_guests', $order, $current_order_by ) . '</th>
-		            <th style="width: 15%;">' . $this->render_table_anchor_tag( __( 'Attendance Status', 'wccf_domain' ), 'attendance_status', $order, $current_order_by ) . '</th>
-		            <th>' . __( 'Additional Info', 'wccf_domain' ) . '</th>
+		            <th style="width: 13%;">' . $this->render_table_anchor_tag( __( 'Last Name', 'wccf-domain' ), 'last_name', $order, $current_order_by ) . '</th>
+		            <th style="width: 13%;">' . $this->render_table_anchor_tag( __( 'First Name', 'wccf-domain' ), 'first_name', $order, $current_order_by ) . '</th>
+		            <th style="width: 20%;">' . __( 'Email', 'wccf-domain' ) . '</th>
+		            <th style="width: 6%;">' . $this->render_table_anchor_tag( __( 'Guests', 'wccf-domain' ), 'num_guests', $order, $current_order_by ) . '</th>
+		            <th style="width: 15%;">' . $this->render_table_anchor_tag( __( 'Attendance Status', 'wccf-domain' ), 'attendance_status', $order, $current_order_by ) . '</th>
+		            <th>' . __( 'Additional Info', 'wccf-domain' ) . '</th>
 		        </tr>
 		      </thead>';
 		echo '<tbody>';
 
 		if ( $results ) {
 			foreach ( $results as $row ) {
+				$attendance_status = $this->get_attendance_status_label( $row['attendance_status'] );
+
 				echo '<tr>';
 				echo '<td>' . esc_html( $row['last_name'] ) . '</td>';
 				echo '<td>' . esc_html( $row['first_name'] ) . '</td>';
 				echo '<td>' . esc_html( $row['email'] ) . '</td>';
 				echo '<td>' . esc_html( $row['num_guests'] ) . '</td>';
-				echo '<td>' . esc_html( $row['attendance_status'] ) . '</td>';
+				echo '<td>' . esc_html( $attendance_status ) . '</td>';
 				echo '<td>' . esc_html( $row['additional_info'] ) . '</td>';
 				echo '</tr>';
 			}
 		} else {
-			echo '<tr><td colspan="6">' . __( 'No entries found.', 'wccf_domain' ) . '</td></tr>';
+			echo '<tr><td colspan="6">' . __( 'No entries found.', 'wccf-domain' ) . '</td></tr>';
 		}
 
 		echo '</tbody>';
@@ -290,8 +292,8 @@ class WCCF_Confirmations_Page {
 		$pagination_links = paginate_links( array(
 			'base'      => $this->wccf_build_url( [ 'paged' => '%#%' ] ),
 			'format'    => '',
-			'prev_text' => __( '&#8592; Previous', 'wccf_domain' ),
-			'next_text' => __( 'Next &#8594;', 'wccf_domain' ),
+			'prev_text' => '&#8592; ' . __( 'Previous', 'wccf-domain' ),
+			'next_text' => __( 'Next', 'wccf-domain' ) . ' &#8594;',
 			'total'     => ceil( $total_rows / $rows_per_page ),
 			'current'   => $current_page,
 		) );
@@ -308,12 +310,12 @@ class WCCF_Confirmations_Page {
 	 *
 	 * @return void
 	 */
-	public function render_export_button( array $results ): void {
+	private function render_export_button( array $results ): void {
 		if ( ! empty( $results ) ) {
 			echo '<div class="wrap">';
 			echo '<form method="post" action="' . admin_url( 'admin-post.php' ) . '" onsubmit="handleExport(this);">';
 			echo '<input type="hidden" name="action" value="wccf_export" />';
-			echo '<input type="submit" value="' . __( 'Export to CSV', 'wccf_domain' ) . '" class="button button-primary" />';
+			echo '<input type="submit" value="' . __( 'Export to CSV', 'wccf-domain' ) . '" class="button button-primary" />';
 			echo '</form>';
 			echo '</div>';
 
@@ -321,31 +323,31 @@ class WCCF_Confirmations_Page {
 		            function handleExport(form) {
 		                const button = form.querySelector("input[type=submit]");
 		                button.disabled = true;
-		                button.value = "' . __( 'Exporting...', 'wccf_domain' ) . '";
+		                button.value = "' . __( 'Exporting...', 'wccf-domain' ) . '";
 		                
 		                // Re-enable button after a short delay
 		                setTimeout(() => {
 		                    button.disabled = false;
-		                    button.value = "' . __( 'Export to CSV', 'wccf_domain' ) . '";
+		                    button.value = "' . __( 'Export to CSV', 'wccf-domain' ) . '";
 		                }, 600); // Small delay for UX
 		            }
 		        </script>';
 		}
 	}
 
-	private function get_order_by_label( string $order_by ) {
+	private function get_order_by_label( string $order_by ): string {
 		$order_by_labels = array(
-			'last_name'         => __( 'Last Name', 'wccf_domain' ),
-			'first_name'        => __( 'First Name', 'wccf_domain' ),
-			'email'             => __( 'Email', 'wccf_domain' ),
-			'num_guests'        => __( 'Guests', 'wccf_domain' ),
-			'attendance_status' => __( 'Attendance Status', 'wccf_domain' ),
+			'last_name'         => __( 'Last Name', 'wccf-domain' ),
+			'first_name'        => __( 'First Name', 'wccf-domain' ),
+			'email'             => __( 'Email', 'wccf-domain' ),
+			'num_guests'        => __( 'Guests', 'wccf-domain' ),
+			'attendance_status' => __( 'Attendance Status', 'wccf-domain' ),
 		);
 
 		return $order_by_labels[ $order_by ];
 	}
 
-	function wccf_build_url( $args = [] ) {
+	private function wccf_build_url( $args = [] ) {
 		$defaults = [
 			'page' => $this->get_page_slug(),
 		];
@@ -357,5 +359,11 @@ class WCCF_Confirmations_Page {
 		$query_args = array_merge( $defaults, $args );
 
 		return add_query_arg( $query_args, admin_url( 'admin.php' ) );
+	}
+
+	private function get_attendance_status_label( string $status ): string {
+		return $status === 'confirmed'
+			? '&#9989; ' . __( 'Confirmed', 'wccf-domain' ) // ✅ Confirmed
+			: '&#10060; ' . __( 'Declined', 'wccf-domain' ); // ❌ Declined
 	}
 }
