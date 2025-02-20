@@ -270,12 +270,14 @@ class WCCF_Confirmations_Page {
 
 		if ( $results ) {
 			foreach ( $results as $row ) {
+				$attendance_status = $this->get_attendance_status_label( $row['attendance_status'] );
+
 				echo '<tr>';
 				echo '<td>' . esc_html( $row['last_name'] ) . '</td>';
 				echo '<td>' . esc_html( $row['first_name'] ) . '</td>';
 				echo '<td>' . esc_html( $row['email'] ) . '</td>';
 				echo '<td>' . esc_html( $row['num_guests'] ) . '</td>';
-				echo '<td>' . esc_html( $row['attendance_status'] ) . '</td>';
+				echo '<td>' . esc_html( $attendance_status ) . '</td>';
 				echo '<td>' . esc_html( $row['additional_info'] ) . '</td>';
 				echo '</tr>';
 			}
@@ -357,5 +359,11 @@ class WCCF_Confirmations_Page {
 		$query_args = array_merge( $defaults, $args );
 
 		return add_query_arg( $query_args, admin_url( 'admin.php' ) );
+	}
+
+	private function get_attendance_status_label( string $status ): string {
+		return $status === 'confirmed'
+			? '&#9989; ' . __( 'Confirmed', 'wccf-domain' ) // ✅ Confirmed
+			: '&#10060; ' . __( 'Declined', 'wccf-domain' ); // ❌ Declined
 	}
 }
