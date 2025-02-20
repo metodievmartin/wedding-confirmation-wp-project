@@ -124,13 +124,16 @@ class GRC_Core {
                                 id="<?php echo self::ENABLE_RECAPTCHA_OPTION; ?>"
                                 value="1"
 							<?php checked( $this->_is_recaptcha_enabled() ); ?>>
-                        Enable reCAPTCHA
+
+						<?php esc_html_e( 'Enable reCAPTCHA', 'grc-v3-domain' ); ?>
+
                     </label>
                 </div>
 
                 <div style="margin-bottom: 20px;">
-                    <label for="<?php echo self::SITE_KEY_OPTION; ?>" style="display: block; font-weight: bold;">Site
-                        Key</label>
+                    <label for="<?php echo self::SITE_KEY_OPTION; ?>" style="display: block; font-weight: bold;">
+						<?php esc_html_e( 'Site Key', 'grc-v3-domain' ); ?>
+                    </label>
                     <input
                             type="text"
                             name="<?php echo self::SITE_KEY_OPTION; ?>"
@@ -141,8 +144,9 @@ class GRC_Core {
                 </div>
 
                 <div style="margin-bottom: 20px;">
-                    <label for="<?php echo self::SECRET_KEY_OPTION; ?>" style="display: block; font-weight: bold;">Secret
-                        Key</label>
+                    <label for="<?php echo self::SECRET_KEY_OPTION; ?>" style="display: block; font-weight: bold;">
+						<?php esc_html_e( 'Secret Key', 'grc-v3-domain' ); ?>
+                    </label>
                     <input
                             type="text"
                             name="<?php echo self::SECRET_KEY_OPTION; ?>"
@@ -153,8 +157,9 @@ class GRC_Core {
                 </div>
 
                 <div style="margin-bottom: 20px;">
-                    <label for="<?php echo self::SCORE_OPTION; ?>" style="display: block; font-weight: bold;">Minimum
-                        Score</label>
+                    <label for="<?php echo self::SCORE_OPTION; ?>" style="display: block; font-weight: bold;">
+						<?php esc_html_e( 'Minimum Score', 'grc-v3-domain' ); ?>
+                    </label>
                     <input
                             type="number"
                             name="<?php echo self::SCORE_OPTION; ?>"

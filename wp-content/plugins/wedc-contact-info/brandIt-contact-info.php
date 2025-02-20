@@ -6,7 +6,7 @@
  * Version: 1.0
  * Author: Martin Metodiev
  * Author URI: https://github.com/metodievmartin
- * Text Domain: wccf-domain
+ * Text Domain: contact-info-domain
  * Domain Path: /languages
  */
 
@@ -49,7 +49,7 @@ class BrandIt_Contact_Info {
 
 	public function __construct() {
 		add_action( 'admin_menu', array( $this, 'add_to_admin_menu' ) );
-		add_action( 'init', array( $this, 'load_languages' ) );
+		add_action( 'plugins_loaded', array( $this, 'load_languages' ) );
 	}
 
 	// ========== Getters ==========
@@ -70,8 +70,8 @@ class BrandIt_Contact_Info {
 
 	function add_to_admin_menu() {
 		$main_menu_page_hook = add_menu_page(
-			esc_html__( 'Contact Info', 'wccf-domain' ),
-			esc_html__( 'Contact Info', 'wccf-domain' ),
+			esc_html__( 'Contact Info', 'contact-info-domain' ),
+			esc_html__( 'Contact Info', 'contact-info-domain' ),
 			'edit_pages',
 			self::MAIN_MENU_PAGE_SLUG,
 			array( $this, 'contact_info_admin_page_html' ),
@@ -92,7 +92,7 @@ class BrandIt_Contact_Info {
 
 	function load_languages() {
 		load_plugin_textdomain(
-			'wccf-domain',
+			'contact-info-domain',
 			false,
 			dirname( plugin_basename( __FILE__ ) ) . '/languages'
 		);
@@ -107,7 +107,7 @@ class BrandIt_Contact_Info {
 			|| ! wp_verify_nonce( $_POST[ self::NONCE_SAVE_CONTACT_INFO ], self::NONCE_SAVE_CONTACT_INFO_ACTION )
 			|| ! current_user_can( 'edit_pages' )
 		) {
-			$this->render_error_message( __( 'Sorry, you are not allowed to manage contact forms.', 'wccf-domain' ) );
+			$this->render_error_message( __( 'Sorry, you are not allowed to manage contact forms.', 'contact-info-domain' ) );
 
 			return;
 		}
@@ -124,7 +124,7 @@ class BrandIt_Contact_Info {
 			update_option( self::OPTION_CONTACT_PHONE_NUMBER, sanitize_text_field( $_POST[ self::OPTION_CONTACT_PHONE_NUMBER ] ) );
 		}
 
-		$this->render_success_message( __( 'Your contact info has been saved.', 'wccf-domain' ) );
+		$this->render_success_message( __( 'Your contact info has been saved.', 'contact-info-domain' ) );
 	}
 
 	// ========== HTML Generators ==========
@@ -133,7 +133,7 @@ class BrandIt_Contact_Info {
 		?>
 
         <div class="wrap my-contact-info-settings">
-            <h1><?php echo esc_html__( 'Your Contact Information', 'wccf-domain' ); ?></h1>
+            <h1><?php echo esc_html__( 'Your Contact Information', 'contact-info-domain' ); ?></h1>
 
 			<?php
 
@@ -157,11 +157,11 @@ class BrandIt_Contact_Info {
                                value="<?php echo esc_attr( $this->get_contact_email() ); ?>"
                                placeholder="name@example.com">
                         <label for="<?php echo self::OPTION_CONTACT_EMAIL_ADDRESS ?>">
-							<?php esc_html_e( 'Email', 'wccf-domain' ); ?>
+							<?php esc_html_e( 'Email', 'contact-info-domain' ); ?>
                         </label>
                     </div>
                     <p class="description">
-						<?php esc_html_e( 'Enter your business email address that will be used for contact purposes.', 'wccf-domain' ) ?>
+						<?php esc_html_e( 'Enter your business email address that will be used for contact purposes.', 'contact-info-domain' ) ?>
                     </p>
                 </div>
 
@@ -174,11 +174,11 @@ class BrandIt_Contact_Info {
                                value="<?php echo esc_attr( $this->get_contact_address() ); ?>"
                                placeholder="123 Street, New York, USA">
                         <label for="<?php echo self::OPTION_CONTACT_ADDRESS ?>">
-							<?php esc_html_e( 'Address', 'wccf-domain' ); ?>
+							<?php esc_html_e( 'Address', 'contact-info-domain' ); ?>
                         </label>
                     </div>
                     <p class="description">
-						<?php esc_html_e( 'Provide the primary address where you can be reached or where your business is located.', 'wccf-domain' ) ?>
+						<?php esc_html_e( 'Provide the primary address where you can be reached or where your business is located.', 'contact-info-domain' ) ?>
                     </p>
                 </div>
 
@@ -193,16 +193,16 @@ class BrandIt_Contact_Info {
                                pattern="^\+?[0-9]{10,15}$"
                                title="Valid formats are +359891234567 or 0891234567">
                         <label for="<?php echo self::OPTION_CONTACT_PHONE_NUMBER ?>">
-							<?php esc_html_e( 'Phone Number', 'wccf-domain' ); ?>
+							<?php esc_html_e( 'Phone Number', 'contact-info-domain' ); ?>
                         </label>
                     </div>
                     <p class="description">
-						<?php esc_html_e( 'Enter your business contact phone number in the correct format, e.g., +359891234567 or 0891234567.', 'wccf-domain' ) ?>
+						<?php esc_html_e( 'Enter your business contact phone number in the correct format, e.g., +359891234567 or 0891234567.', 'contact-info-domain' ) ?>
                     </p>
                 </div>
 
                 <input type="submit" id="submit" class="button button-primary"
-                       value="<?php esc_html_e( 'Save Changes', 'wccf-domain' ) ?>">
+                       value="<?php esc_html_e( 'Save Changes', 'contact-info-domain' ) ?>">
             </form>
         </div>
 

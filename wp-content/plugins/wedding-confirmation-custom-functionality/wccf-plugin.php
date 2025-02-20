@@ -6,7 +6,7 @@
  * Version: 1.0
  * Author: Martin Metodiev
  * Author URI: https://github.com/metodievmartin
- * Text Domain: wccf_domain
+ * Text Domain: wccf-domain
  * Domain Path: /languages
  */
 
@@ -37,6 +37,9 @@ class Wedding_Confirmation_Custom_Functionality {
 		$this->define( 'WCCF_DIR_URL', plugin_dir_url( __FILE__ ) );
 		$this->define( 'WCCF_BASENAME', plugin_basename( __FILE__ ) );
 
+		// Load plugin text domain for translations
+		add_action( 'plugins_loaded', array( $this, 'load_languages' ) );
+
 		// Register activation hook.
 		register_activation_hook( __FILE__, array( $this, 'wccf_plugin_activated' ) );
 		register_deactivation_hook( __FILE__, array( $this, 'wccf_plugin_deactivated' ) );
@@ -66,6 +69,17 @@ class Wedding_Confirmation_Custom_Functionality {
 		$this->instances['contact_form'] = new Contact_Form_Main( $this->services['confirmations'], $this->services['settings'] );
 		$this->instances['admin']        = new WCCF_Admin_Main( $this->services['confirmations'], $this->services['settings'] );
 		$this->instances['info-card']    = new WCCF_Info_Card_Main();
+	}
+
+	/**
+	 * Load plugin languages.
+	 */
+	public function load_languages() {
+		load_plugin_textdomain(
+			'wccf-domain',
+			false,
+			dirname( WCCF_BASENAME ) . '/languages'
+		);
 	}
 
 	/**
