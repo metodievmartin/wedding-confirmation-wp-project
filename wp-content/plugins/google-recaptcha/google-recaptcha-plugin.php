@@ -1,9 +1,11 @@
 <?php
-/**
+/*
  * Plugin Name: Custom Google reCAPTCHA v3
  * Description: A class-based plugin to handle Google reCAPTCHA v3 with customisable score and API keys.
  * Version: 1.0
  * Author: Martin Metodiev
+ * Text Domain: grc-v3-domain
+ * Domain Path: /languages
  */
 
 // Exit if this file accessed directly
@@ -103,7 +105,7 @@ class Google_Recaptcha_Main {
 }
 
 /**
- * The main function responsible for initialising and returning the single BrandIt_Custom_Functionality Instance to functions everywhere.
+ * The main function responsible for initialising and returning the single Google_Recaptcha_Main Instance to functions everywhere.
  *
  * @return  Google_Recaptcha_Main
  */
