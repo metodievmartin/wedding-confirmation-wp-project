@@ -5,6 +5,18 @@
   a, {
     color: $text-muted;
   }
+
+  .logo-container {
+    color: $text-dark;
+    font-family: $font-family-serif;
+    font-style: italic;
+    font-size: rfs-value(19px);
+    font-weight: 600;
+  }
+
+  .main-logo {
+    height: rfs-value(120px);
+  }
 }
 
 .main-footer-section .nav-link::before {
@@ -41,7 +53,7 @@
 }
 
 .footer-column ul li a:hover {
-  color: $primary;
+  color: var(--bs-primary);
 }
 
 .copyright-area {

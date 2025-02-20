@@ -98,22 +98,21 @@ $has_end_date_passed = wccf()->has_end_date_passed();
                                     </div>
 
 									<?php if ( wccf_is_recaptcha_enabled() ): ?>
-                                        <div>
+                                        <div class="recaptcha-terms-container">
                                             This site is protected by reCAPTCHA and the Google
                                             <a href="https://policies.google.com/privacy">Privacy Policy</a> and
                                             <a href="https://policies.google.com/terms">Terms of Service</a> apply.
                                         </div>
 									<?php endif; ?>
 
-                                    <div class="form-submission-alert alert d-none alert-dismissible my-4" role="alert">
+                                    <div class="form-submission-alert alert d-none alert-dismissible my-4">
                                         <div class="alert-message type-success">
 											<?php esc_html_e( 'Submitted successfully!', 'wedding_confirmation' ); ?>
                                         </div>
                                         <div class="alert-message type-error">
 											<?php esc_html_e( 'Sorry, there has been an error.', 'wedding_confirmation' ); ?>
                                         </div>
-                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
-                                                aria-label="Close"></button>
+                                        <button type="button" class="btn-close" aria-label="Close"></button>
                                     </div>
 
                                     <div class="submit-info text-center mt-4">

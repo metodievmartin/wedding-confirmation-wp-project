@@ -19,7 +19,7 @@ class Confirmations_DB_Service {
 	}
 
 	public function get_all_confirmations() {
-		if ( ! current_user_can( 'manage_options' ) ) {
+		if ( ! current_user_can( 'edit_pages' ) ) {
 			return array();
 		}
 
@@ -27,7 +27,7 @@ class Confirmations_DB_Service {
 	}
 
 	public function get_confirmations( $query_args = array() ) {
-		if ( ! current_user_can( 'manage_options' ) ) {
+		if ( ! current_user_can( 'edit_pages' ) ) {
 			return array();
 		}
 

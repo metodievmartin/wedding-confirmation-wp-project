@@ -24,7 +24,7 @@ $our_story_card_image       = $our_story_section_fields['our_story_card_image'] 
 			?>
 
             <div class="row g-0 justify-content-center">
-                <div class="col-10 col-sm-7 col-md-6 col-lg-5">
+                <div class="col-11 col-sm-7 col-md-6 col-lg-5">
                     <div class="story-caption background-img"
                          style="background-image: url('<?php echo get_asset_image_url( '/bg/bg-pattern-main-25.png' ) ?>');">
                         <div class="story-details">
@@ -54,7 +54,7 @@ $our_story_card_image       = $our_story_section_fields['our_story_card_image'] 
 
 
                 </div>
-                <div class="col-10 col-sm-7 col-md-6 col-lg-5">
+                <div class="col-11 col-sm-7 col-md-6 col-lg-5">
                     <div class="story-img">
 						<?php if ( ! empty( $our_story_card_image ) && isset( $our_story_card_image['sizes'] ) ): ?>
 
@@ -65,7 +65,7 @@ $our_story_card_image       = $our_story_section_fields['our_story_card_image'] 
 						<?php else: ?>
 
                             <img class="story2 img-thumbnail"
-                                 src="<?php echo get_asset_image_url( 'gallery/the-proposal.jpg' ) ?>"
+                                 src="<?php echo get_asset_image_url( 'gallery/the-proposal.webp' ) ?>"
                                  alt="">
 						<?php endif; ?>
                     </div>

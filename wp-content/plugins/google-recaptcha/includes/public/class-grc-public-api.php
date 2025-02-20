@@ -68,7 +68,7 @@ class GRC_Public_API {
 		$secret_key     = $this->get_secret_key();
 		$required_score = $this->get_required_score();
 
-		if ( empty( $token ) ) {
+		if ( empty( $token ) || empty( $secret_key ) ) {
 			return false;
 		}
 
@@ -81,8 +81,6 @@ class GRC_Public_API {
 
 		$response_body      = wp_remote_retrieve_body( $response );
 		$recaptcha_response = json_decode( $response_body, true );
-
-		error_log( $recaptcha_response );
 
 		if ( empty( $recaptcha_response['success'] ) || $recaptcha_response['score'] < $required_score ) {
 			return false;

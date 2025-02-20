@@ -136,7 +136,7 @@ input.datepicker {
     list-style: none;
     padding: 0;
     margin: 0;
-    max-height: 150px;
+    max-height: 290px;
     overflow-y: auto;
 }
 
@@ -156,4 +156,14 @@ input.datepicker {
     height: 25px;
     display: inline-block;
     margin-right: 10px;
+}
+
+/*
+    Overriding the icon/image picker preview window because black SVG icons are not visible
+*/
+.acf-field-icon-picker .acf-icon-picker-media-library .acf-icon-picker-media-library-preview-dashicon,
+.acf-field-icon-picker .acf-icon-picker-media-library .acf-icon-picker-media-library-preview-img,
+.acf-field-icon-picker .acf-icon-picker-url-tabs .acf-icon-picker-media-library-preview-dashicon,
+.acf-field-icon-picker .acf-icon-picker-url-tabs .acf-icon-picker-media-library-preview-img {
+    background-color: #dcdcdc;
 }

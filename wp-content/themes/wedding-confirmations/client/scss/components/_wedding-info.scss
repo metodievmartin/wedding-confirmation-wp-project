@@ -1,6 +1,6 @@
 .wedding-info-section {
-  padding-top: rfs-value(150px);
-  padding-bottom: rfs-value(150px);
+  padding-top: rfs-value(100px);
+  padding-bottom: rfs-value(100px);
 
   .single-card {
     background: #fff;
@@ -95,6 +95,13 @@
   height: 2px;
   background-color: currentColor;
   transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
+}
+
+@include media-breakpoint-up(lg) {
+  .wedding-info-section {
+    padding-top: rfs-value(140px);
+    padding-bottom: rfs-value(140px);
+  }
 }
 
 .wedding-info-section .single-card:hover {
