@@ -24,6 +24,10 @@
 function add_og_meta_tags() {
 	global $post;
 
+	if ( empty( $post ) || empty( $post->ID ) ) {
+		return;
+	}
+
 	$og_image = get_the_post_thumbnail_url( $post->ID, 'full' );
 
 	if ( ! $og_image ) {
