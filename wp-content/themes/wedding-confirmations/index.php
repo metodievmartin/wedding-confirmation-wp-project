@@ -1,9 +1,3 @@
-<?php get_header(); ?>
-
-<main>
-    <div class="container-xxl">
-        <h1>Hi</h1>
-    </div>
-</main>
-
-<?php get_footer(); ?>
+<?php
+wp_redirect( home_url(), 301 );
+exit;
