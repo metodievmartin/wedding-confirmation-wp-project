@@ -1,0 +1,207 @@
+# Copyright (C) 2025 Martin Metodiev
+# This file is distributed under the same license as the Wedding Guest Confirmation theme.
+msgid ""
+msgstr ""
+"Project-Id-Version: Wedding Guest Confirmation 1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/wedding-"
+"confirmations\n"
+"POT-Creation-Date: 2025-03-08T21:27:53+00:00\n"
+"PO-Revision-Date: 2025-03-09 00:09+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: bg\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.5\n"
+"X-Domain: wedc-domain\n"
+
+#. Theme Name of the theme
+#: style.css
+msgid "Wedding Guest Confirmation"
+msgstr "Wedding Guest Confirmation"
+
+#. Description of the theme
+#: style.css
+msgid ""
+"A lightweight and customisable WordPress theme designed for wedding guest "
+"confirmations. It features a clean and intuitive interface, making it easy "
+"to manage RSVPs and display event details."
+msgstr ""
+"A lightweight and customisable WordPress theme designed for wedding guest "
+"confirmations. It features a clean and intuitive interface, making it easy "
+"to manage RSVPs and display event details."
+
+#. Author of the theme
+#: style.css
+msgid "Martin Metodiev"
+msgstr "Martin Metodiev"
+
+#. Author URI of the theme
+#: style.css
+msgid "https://github.com/metodievmartin"
+msgstr "https://github.com/metodievmartin"
+
+#: 404.php:10
+msgid "Oops! Page Not Found"
+msgstr "Упс! Страницата не беше намерена"
+
+#: 404.php:12
+msgid ""
+"The page you are looking for might have been removed, had its name changed, "
+"or is temporarily unavailable."
+msgstr ""
+"Страницата, която търсите, може да е била премахната, да е с променено име "
+"или временно недостъпна."
+
+#: 404.php:15
+msgid "Go to Homepage"
+msgstr "Към Начална страница"
+
+#: footer.php:22
+msgid "Page Links"
+msgstr "Меню"
+
+#: footer.php:40
+msgid "Contact Us"
+msgstr "Контакти"
+
+#: template-parts/components/info-card.php:35
+msgid "Check out the map"
+msgstr "Виж на картата"
+
+#: template-parts/homepage/contact-form.php:24
+msgid "Are you attending?"
+msgstr "Ще присъствате ли?"
+
+#: template-parts/homepage/contact-form.php:34
+#: template-parts/homepage/contact-form.php:37
+msgid "First Name"
+msgstr "Име"
+
+#: template-parts/homepage/contact-form.php:40
+msgid "First name is a required field"
+msgstr "Това поле е задължително"
+
+#: template-parts/homepage/contact-form.php:48
+#: template-parts/homepage/contact-form.php:51
+msgid "Last Name"
+msgstr "Фамилия"
+
+#: template-parts/homepage/contact-form.php:54
+msgid "Last name is a required field"
+msgstr "Това поле е задължително"
+
+#: template-parts/homepage/contact-form.php:61
+#: template-parts/homepage/contact-form.php:64
+msgid "Your Email"
+msgstr "Имейл"
+
+#: template-parts/homepage/contact-form.php:67
+msgid "This field should be a valid email"
+msgstr "Това поле е задължително"
+
+#: template-parts/homepage/contact-form.php:76
+msgid "Guest"
+msgstr "Гост"
+
+#: template-parts/homepage/contact-form.php:78
+#: template-parts/homepage/contact-form.php:79
+#: template-parts/homepage/contact-form.php:80
+#: template-parts/homepage/contact-form.php:81
+#: template-parts/homepage/contact-form.php:82
+#: template-parts/homepage/contact-form.php:83
+#: template-parts/homepage/contact-form.php:84
+msgid "Guests"
+msgstr "Гости"
+
+#: template-parts/homepage/contact-form.php:92
+msgid "Confirm"
+msgstr "Потвърждавам"
+
+#: template-parts/homepage/contact-form.php:94
+msgid "Decline"
+msgstr "Отказвам"
+
+#: template-parts/homepage/contact-form.php:101
+msgid "Add additional info"
+msgstr "Допълнителна информация"
+
+#: template-parts/homepage/contact-form.php:104
+msgid "Additional info"
+msgstr "Допълнителна информация"
+
+#: template-parts/homepage/contact-form.php:118
+msgid "Submitted successfully!"
+msgstr "Изпратено успешно!"
+
+#: template-parts/homepage/contact-form.php:121
+msgid "Sorry, there has been an error."
+msgstr "Съжаляваме, възникна грешка."
+
+#: template-parts/homepage/contact-form.php:128
+msgid "Submit"
+msgstr "Изпрати"
+
+#: template-parts/homepage/contact-form.php:141
+msgid "Confirmation is closed"
+msgstr "Приемането на потвърждения приключи"
+
+#: template-parts/homepage/contact-form.php:147
+msgid ""
+"We are no longer taking new confirmations. Thank you if you have already "
+"responded!"
+msgstr ""
+"Вече не приемаме нови потвърждения. Благодарим Ви, ако вече сте отговорили!"
+
+#: template-parts/homepage/countdown-area.php:11
+msgid "Confirmation Closed:"
+msgstr "Затворено за потвърждения:"
+
+#: template-parts/homepage/countdown-area.php:11
+msgid "Confirmation Closes In:"
+msgstr "Потвърждение до:"
+
+#. translators: 1: confirmation deadline time, 2: confirmation deadline date
+#: template-parts/homepage/countdown-area.php:16
+msgid ""
+"We kindly ask you to confirm or decline your attendance until %1$s o'clock "
+"on %2$s"
+msgstr "Молим Ви учтиво да потвърдите своето присъствие до %1$s часа на %2$s"
+
+#: template-parts/homepage/countdown-area.php:21
+msgid "We are no longer accepting new confirmations. Thank you!"
+msgstr ""
+"Приемането на нови потвърждения приключи. Благодарим Ви за разбирането!"
+
+#: template-parts/homepage/countdown-area.php:42
+msgid "days"
+msgstr "дни"
+
+#: template-parts/homepage/countdown-area.php:46
+msgid "hours"
+msgstr "часа"
+
+#: template-parts/homepage/countdown-area.php:50
+msgid "mins"
+msgstr "мин"
+
+#: template-parts/homepage/countdown-area.php:54
+msgid "secs"
+msgstr "сек"
+
+#: template-parts/homepage/our-story.php:18
+msgid "Our Love Story"
+msgstr "Нашата история"
+
+#: template-parts/homepage/wedding-info.php:11
+msgid "Wedding Info"
+msgstr "Детайли за сватбата"
+
+#: template-parts/homepage/wedding-info.php:41
+msgid "Please, add wedding information"
+msgstr "Моля, добавете детайли за сватбата"
+
+#. Template Name of the theme
+msgid "Homepage"
+msgstr "Начална страница"
