@@ -8,17 +8,17 @@ $has_end_date_passed    = wccf()->has_end_date_passed();
     <div class="container-lg">
 
 		<?php
-		$countdown_section_title = $has_end_date_passed ? __( 'Confirmation Closed:', 'wedding-confirmations' ) : __( 'Confirmation Closes In:', 'wedding-confirmations' );
+		$countdown_section_title = $has_end_date_passed ? __( 'Confirmation Closed:', 'wedc-domain' ) : __( 'Confirmation Closes In:', 'wedc-domain' );
 
 		if ( ! empty( $confirmations_end_date ) && ! $has_end_date_passed ) {
 			$countdown_section_subtitle = sprintf(
 			/* translators: 1: confirmation deadline time, 2: confirmation deadline date */
-				__( "We kindly ask you to confirm or decline your attendance until %s o'clock on %s", 'wedding-confirmations' ),
+				__( "We kindly ask you to confirm or decline your attendance until %1\$s o'clock on %2\$s", 'wedc-domain' ),
 				$confirmations_end_date->format( 'H:i' ),
-				$confirmations_end_date->format( 'd/m/Y' ),
+				$confirmations_end_date->format( 'd.m.Y' ),
 			);
 		} else {
-			$countdown_section_subtitle = __( 'We are no longer accepting new confirmations. Thank you!', 'wedding-confirmations' );
+			$countdown_section_subtitle = __( 'We are no longer accepting new confirmations. Thank you!', 'wedc-domain' );
 		}
 
 		$section_title_args = array(
@@ -38,20 +38,20 @@ $has_end_date_passed    = wccf()->has_end_date_passed();
                      data-end-date="<?php echo $date_string ?>">
                     <div class="digits-container d-flex justify-content-between flex-wrap">
                         <div class="single-counter text-center">
-                            <span id="cd-days" class="counter">23</span>
-                            <p>days</p>
+                            <span id="cd-days" class="counter">00</span>
+                            <p><?php esc_html_e( 'days', 'wedc-domain' ); ?></p>
                         </div>
                         <div class="single-counter text-center">
-                            <span id="cd-hours" class="counter">15</span>
-                            <p>hours</p>
+                            <span id="cd-hours" class="counter">00</span>
+                            <p><?php esc_html_e( 'hours', 'wedc-domain' ); ?></p>
                         </div>
                         <div class="single-counter text-center">
-                            <span id="cd-minutes" class="counter">46</span>
-                            <p>mins</p>
+                            <span id="cd-minutes" class="counter">00</span>
+                            <p><?php esc_html_e( 'mins', 'wedc-domain' ); ?></p>
                         </div>
                         <div class="single-counter text-center">
-                            <span id="cd-seconds" class="counter">20</span>
-                            <p>secs</p>
+                            <span id="cd-seconds" class="counter">00</span>
+                            <p><?php esc_html_e( 'secs', 'wedc-domain' ); ?></p>
                         </div>
                     </div>
 
