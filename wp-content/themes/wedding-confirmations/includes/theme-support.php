@@ -22,3 +22,9 @@ function theme_add_support() {
 }
 
 add_action( 'after_setup_theme', 'theme_add_support' );
+
+function load_theme_translations() {
+	load_theme_textdomain( 'wedc-domain', get_template_directory() . '/languages' );
+}
+
+add_action( 'after_setup_theme', 'load_theme_translations' );

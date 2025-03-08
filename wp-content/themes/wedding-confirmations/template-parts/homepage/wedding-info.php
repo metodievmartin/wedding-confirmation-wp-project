@@ -8,7 +8,7 @@ $info_cards_query = wccf()->get_info_cards();
 
 		<?php
 		$section_title_args = array(
-			'section_title' => __( 'Wedding Info', 'wedding-confirmations' ),
+			'section_title' => __( 'Wedding Info', 'wedc-domain' ),
 		);
 
 		get_template_part( 'template-parts/components/section-title', null, $section_title_args );
@@ -38,7 +38,7 @@ $info_cards_query = wccf()->get_info_cards();
 
 				}
 			} else {
-				echo '<div class="text-center">' . esc_html( __( 'Please, add wedding information', 'wedding-confirmations' ) ) . '</div>';
+				echo '<div class="text-center">' . esc_html( __( 'Please, add wedding information', 'wedc-domain' ) ) . '</div>';
 			}
 
 			?>
